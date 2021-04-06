@@ -11,10 +11,10 @@ public class Producto_Compra {
 	private int Id_Compra;
 	@Id
 	private int Id_Producto;
-	private String precio_unitario;
+	private float precio_unitario;
 	private int cantidad;
 	
-	public Producto_Compra(int id_Compra, int id_Producto, String precio_unitario, int cantidad) {
+	public Producto_Compra(int id_Compra, int id_Producto, float precio_unitario, int cantidad) {
 		super();
 		Id_Compra = id_Compra;
 		Id_Producto = id_Producto;
@@ -38,7 +38,7 @@ public class Producto_Compra {
 		Id_Producto = id_Producto;
 	}
 
-	public String getPrecio_unitario() {
+	public float getPrecio_unitario() {
 		return precio_unitario;
 	}
 

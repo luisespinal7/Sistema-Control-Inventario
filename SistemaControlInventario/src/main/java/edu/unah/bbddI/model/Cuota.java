@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Cuota {
 	@Id
 	private int Id_Cuota;
-	private float total_abandonado;
+	private float total_abonado;
 	private Date fecha_pago;
 	
 	@ManyToOne
@@ -23,10 +23,10 @@ public class Cuota {
 	@JsonBackReference
 	private Pago pago;
 
-	public Cuota(int id_Cuota, float total_abandonado, Date fecha_pago, Pago pago) {
+	public Cuota(int id_Cuota, float total_abonado, Date fecha_pago, Pago pago) {
 		super();
 		Id_Cuota = id_Cuota;
-		this.total_abandonado = total_abandonado;
+		this.total_abonado = total_abonado;
 		this.fecha_pago = fecha_pago;
 		this.pago = pago;
 	}
@@ -43,8 +43,8 @@ public class Cuota {
 		return total_abandonado;
 	}
 
-	public void setTotal_abandonado(float total_abandonado) {
-		this.total_abandonado = total_abandonado;
+	public void setTotal_abonado(float total_abonado) {
+		this.total_abonado = total_abonado;
 	}
 
 	public Date getFecha_pago() {
