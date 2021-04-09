@@ -1,18 +1,38 @@
 package edu.unah.bbddI.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "PRODUCTO_COMPRA")
-public class Producto_Compra {
+@IdClass(IdProducto_Compra.class)
+public class Producto_Compra implements Serializable{
 	@Id
 	private int Id_Compra;
 	@Id
 	private int Id_Producto;
 	private float precio_unitario;
 	private int cantidad;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Compra", referencedColumnName="Id_Compra", insertable = false, updatable = false)
+	@JsonBackReference
+	private Factura_Compra factura_compra;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Producto", referencedColumnName="Id_Producto", insertable = false, updatable = false)
+	@JsonBackReference
+	private Producto producto2;;
 	
 	public Producto_Compra(int id_Compra, int id_Producto, float precio_unitario, int cantidad) {
 		super();
@@ -42,7 +62,7 @@ public class Producto_Compra {
 		return precio_unitario;
 	}
 
-	public void setPrecio_unitario(String precio_unitario) {
+	public void setPrecio_unitario(float precio_unitario) {
 		this.precio_unitario = precio_unitario;
 	}
 
