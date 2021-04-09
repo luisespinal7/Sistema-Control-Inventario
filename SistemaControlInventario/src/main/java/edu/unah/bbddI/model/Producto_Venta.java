@@ -2,10 +2,18 @@ package edu.unah.bbddI.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "PRODUCTO_VENTA")
+@IdClass(IdProducto_Venta.class)
 public class Producto_Venta {
 	@Id
 	private int Id_Venta;
@@ -13,6 +21,16 @@ public class Producto_Venta {
 	private int Id_Producto;
 	private float precio_unitario;
 	private int cantidad;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Venta", referencedColumnName="Id_Venta", insertable = false, updatable = false)
+	@JsonBackReference
+	private Factura_Venta factura_venta;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Producto", referencedColumnName="Id_Producto", insertable = false, updatable = false)
+	@JsonBackReference
+	private Producto producto3;
 	
 	public Producto_Venta(int id_Venta, int id_Producto, float precio_unitario, int cantidad) {
 		super();
