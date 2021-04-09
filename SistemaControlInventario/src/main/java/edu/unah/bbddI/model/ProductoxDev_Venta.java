@@ -2,10 +2,18 @@ package edu.unah.bbddI.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "PROVEEDORXDEV_VENTA")
+@IdClass(IdProductoxDev_Venta.class)
 public class ProductoxDev_Venta {
 	@Id
 	private int Id_Dev_Venta;
@@ -15,9 +23,19 @@ public class ProductoxDev_Venta {
 	private float precio_unitario;
 	private String razon;
 	
-	public ProductoxDev_Venta(int id_Dev_Int, int id_Producto, int cantidad, float precio_unitario, String razon) {
+	@ManyToOne
+	@JoinColumn(name="Id_Dev_Venta", referencedColumnName="Id_Dev_Venta", insertable = false, updatable = false)
+	@JsonBackReference
+	private Devolucion_Venta devolucion_venta;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Producto", referencedColumnName="Id_Producto", insertable = false, updatable = false)
+	@JsonBackReference
+	private Producto producto4;
+	
+	public ProductoxDev_Venta(int id_Dev_Venta, int id_Producto, int cantidad, float precio_unitario, String razon) {
 		super();
-		Id_Dev_Int = id_Dev_Int;
+		Id_Dev_Venta = id_Dev_Venta;
 		Id_Producto = id_Producto;
 		this.cantidad = cantidad;
 		this.precio_unitario = precio_unitario;
@@ -25,11 +43,11 @@ public class ProductoxDev_Venta {
 	}
 
 	public int getId_Dev_Int() {
-		return Id_Dev_Int;
+		return Id_Dev_Venta;
 	}
 
-	public void setId_Dev_Int(int id_Dev_Int) {
-		Id_Dev_Int = id_Dev_Int;
+	public void setId_Dev_Int(int id_Dev_Venta) {
+		Id_Dev_Venta = id_Dev_Venta;
 	}
 
 	public int getId_Producto() {
