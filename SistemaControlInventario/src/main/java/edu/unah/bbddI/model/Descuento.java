@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
+@Table(name="DESCUENTO")
 public class Descuento {
 	@Id
 	private int Id_Descuento;
