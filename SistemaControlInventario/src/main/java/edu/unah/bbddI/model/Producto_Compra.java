@@ -15,8 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "PRODUCTO_COMPRA")
-public class Producto_Compra {
-	
 @IdClass(IdProducto_Compra.class)
 public class Producto_Compra implements Serializable{
 	@Id
@@ -27,16 +25,6 @@ public class Producto_Compra implements Serializable{
 	private int cantidad;
 	
 	@ManyToOne
-	@JoinColumn(name="Id_Compra")
-	@JsonBackReference
-	private Factura_Compra f_compra;
-	
-	@ManyToOne
-	@JoinColumn(name="Id_Producto")
-	@JsonBackReference
-	private Producto producto;
-	
-	public Producto_Compra(float precio_unitario, int cantidad, Factura_Compra f_compra, Producto producto) {
 	@JoinColumn(name="Id_Compra", referencedColumnName="Id_Compra", insertable = false, updatable = false)
 	@JsonBackReference
 	private Factura_Compra factura_compra;
@@ -48,26 +36,26 @@ public class Producto_Compra implements Serializable{
 	
 	public Producto_Compra(int id_Compra, int id_Producto, float precio_unitario, int cantidad) {
 		super();
+		Id_Compra = id_Compra;
+		Id_Producto = id_Producto;
 		this.precio_unitario = precio_unitario;
 		this.cantidad = cantidad;
-		this.f_compra = f_compra;
-		this.producto = producto;
 	}
 
-	public Factura_Compra getF_compra() {
-		return f_compra;
+	public int getId_Compra() {
+		return Id_Compra;
 	}
 
-	public void setF_compra(Factura_Compra f_compra) {
-		this.f_compra = f_compra;
+	public void setId_Compra(int id_Compra) {
+		Id_Compra = id_Compra;
 	}
 
-	public Producto getProducto() {
-		return producto;
+	public int getId_Producto() {
+		return Id_Producto;
 	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setId_Producto(int id_Producto) {
+		Id_Producto = id_Producto;
 	}
 
 	public float getPrecio_unitario() {
