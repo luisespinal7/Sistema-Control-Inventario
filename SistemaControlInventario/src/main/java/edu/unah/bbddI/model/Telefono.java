@@ -13,16 +13,16 @@ public class Telefono {
 	
 	public Telefono(int id_Telefono, String numero) {
 		super();
-		this.id_Telefono = id_Telefono;
+		this.Id_Telefono = id_Telefono;
 		this.numero = numero;
 	}
 
 	public int getId_Telefono() {
-		return id_Telefono;
+		return Id_Telefono;
 	}
 
 	public void setId_Telefono(int id_Telefono) {
-		this.id_Telefono = id_Telefono;
+		this.Id_Telefono = id_Telefono;
 	}
 
 	public String getNumero() {

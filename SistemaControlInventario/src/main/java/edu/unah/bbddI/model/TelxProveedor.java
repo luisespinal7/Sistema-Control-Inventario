@@ -1,16 +1,37 @@
 package edu.unah.bbddI.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "TELXPROVEEDOR")
-public class TelxProveedor {
+@IdClass(IdTelxProveedor.class)
+public class TelxProveedor implements Serializable{
 	@Id
 	private int Id_Telefono;
 	@Id
 	private int Id_Proveedor;
+	
+	@OneToOne
+	@JoinColumn(name="Id_Telefono", referencedColumnName="Id_Telefono", insertable = false, updatable = false)
+	@JsonBackReference
+	private Telefono telefono4;
+	
+	@ManyToOne
+	@JoinColumn(name="Id_Proveedor", referencedColumnName="Id_Proveedor", insertable = false, updatable = false)
+	@JsonBackReference
+	private Proveedor proveedor3;
 	
 	public TelxProveedor(int id_Telefono, int id_Proveedor) {
 		super();

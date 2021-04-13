@@ -2,17 +2,21 @@ package edu.unah.bbddI.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="DESCUENTO")
 public class Descuento {
 	@Id
 	private int Id_Descuento;
 	private String tipo_descuento;
 	private float descuento;
 	
-	@OneToMany(mappedBy="descuento", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="descuento", fetch=FetchType.EAGER)
 	private List<Factura_Venta> factura_venta;
 	
 	public Descuento(int id_Descuento, String tipo_descuento, float descuento) {

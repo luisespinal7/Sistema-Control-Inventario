@@ -40,10 +40,10 @@ public class Cuota {
 	}
 
 	public float getTotal_abandonado() {
-		return total_abandonado;
+		return total_abonado;
 	}
 
-	public void setTotal_abonado(float total_abonado) {
+	public void setTotal_abandonado(float total_abonado) {
 		this.total_abonado = total_abonado;
 	}
 
