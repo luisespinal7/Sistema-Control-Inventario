@@ -18,6 +18,8 @@ public class Seccion_Producto {
 	@OneToMany(mappedBy="seccion_producto", fetch=FetchType.LAZY)
 	private List<Producto> producto;
 	
+	public Seccion_Producto() {}
+
 	public Seccion_Producto(int id_Seccion_Producto, String nombre_seccion_producto) {
 		super();
 		Id_Seccion_Producto = id_Seccion_Producto;

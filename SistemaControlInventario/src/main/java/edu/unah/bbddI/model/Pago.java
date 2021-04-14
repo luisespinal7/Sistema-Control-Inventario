@@ -36,6 +36,8 @@ public class Pago {
 	@JoinColumn(name="Id_Tipo_Pago")
 	@JsonBackReference
 	private Tipo_Pago tipo_pago;
+	
+	public Pago() {}
 
 	public Pago(int id_Pgo, float importe_total, float importe_x_cuota, int cantidad_cuotas, Date fecha_limite,
 			List<Cuota> cuota, Tipo_Pago tipo_pago) {

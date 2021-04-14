@@ -30,6 +30,8 @@ public class Factura_Compra {
 	@JoinColumn(name="Id_Proveedor")
 	@JsonBackReference
 	private Proveedor proveedor2;
+	
+	public Factura_Compra() {}
 
 
 	public Factura_Compra(int id_Compra, Date fecha, float subtotal, float descuento, float total, Pago pago2,

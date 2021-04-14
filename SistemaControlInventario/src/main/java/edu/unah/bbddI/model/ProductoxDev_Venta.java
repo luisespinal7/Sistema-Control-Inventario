@@ -33,6 +33,8 @@ public class ProductoxDev_Venta {
 	@JsonBackReference
 	private Producto producto4;
 	
+	public ProductoxDev_Venta() {}
+
 	public ProductoxDev_Venta(int id_Dev_Venta, int id_Producto, int cantidad, float precio_unitario, String razon) {
 		super();
 		Id_Dev_Venta = id_Dev_Venta;

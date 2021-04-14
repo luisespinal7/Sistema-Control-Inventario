@@ -37,6 +37,8 @@ public class Producto {
 	@JoinColumn(name="Id_Marca")
 	@JsonBackReference
 	private Marca marca;
+	
+	public Producto() {}
 
 	public Producto(int id_Producto, String nombre_producto, Date fecha_caducidad, float precio_venta, String medida,
 			int cantidad_disponible, int cantidad_media, Tipo_Producto tipo_producto, Seccion_Producto seccion_producto,

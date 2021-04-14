@@ -27,6 +27,8 @@ public class Cliente {
 	@OneToMany(mappedBy="cliente2", fetch=FetchType.LAZY)
 	private List<Factura_Venta> factura_venta;
 	
+	public Cliente() {}
+
 	public Cliente(int id_Cliente, String p_nombre, String s_nombre, String p_apelido, String s_apellido, String correo,
 			String dNI, String direccion) {
 		super();

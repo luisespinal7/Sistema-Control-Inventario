@@ -32,6 +32,8 @@ public class Producto_Venta {
 	@JsonBackReference
 	private Producto producto3;
 	
+	public Producto_Venta() {}
+
 	public Producto_Venta(int id_Venta, int id_Producto, float precio_unitario, int cantidad) {
 		super();
 		Id_Venta = id_Venta;

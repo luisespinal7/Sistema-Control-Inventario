@@ -19,6 +19,8 @@ public class Descuento {
 	@OneToMany(mappedBy="descuento", fetch=FetchType.EAGER)
 	private List<Factura_Venta> factura_venta;
 	
+	public Descuento() {}
+
 	public Descuento(int id_Descuento, String tipo_descuento, float descuento) {
 		super();
 		Id_Descuento = id_Descuento;

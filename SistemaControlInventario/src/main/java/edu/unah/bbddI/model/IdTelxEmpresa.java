@@ -12,6 +12,8 @@ public class IdTelxEmpresa implements Serializable{
 	private int Id_Telefono;
 	private int Id_Empresa;
 	
+	public IdTelxEmpresa() {}
+
 	public IdTelxEmpresa(int id_Telefono, int id_Empresa) {
 		super();
 		Id_Telefono = id_Telefono;

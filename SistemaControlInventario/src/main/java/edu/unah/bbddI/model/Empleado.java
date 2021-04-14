@@ -47,6 +47,8 @@ public class Empleado {
 	
 	@OneToMany(mappedBy="empleado2", fetch=FetchType.LAZY)
 	private List<Factura_Venta> factura_venta;
+	
+	public Empleado() {}
 
 	public Empleado(int id_Empleado, String p_nombre, String s_nombre, String p_apellido, String s_apellido,
 			String correo, int edad, Date fecha_ingreso, float salario, String dNI, String usuario, String contrasenia,

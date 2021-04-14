@@ -12,6 +12,8 @@ public class IdProductoxDev_Compra implements Serializable {
 	private int Id_Dev_Compra;
 	private int Id_Producto;
 	
+	public IdProductoxDev_Compra() {}
+
 	public IdProductoxDev_Compra(int id_Dev_Compra, int id_Producto) {
 		super();
 		Id_Dev_Compra = id_Dev_Compra;

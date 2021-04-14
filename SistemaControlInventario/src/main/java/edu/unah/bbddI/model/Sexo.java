@@ -18,6 +18,8 @@ public class Sexo {
 	@OneToMany(mappedBy="sexo", fetch=FetchType.LAZY)
 	private List<Empleado> empleado;
 	
+	public Sexo() {}
+
 	public Sexo(int id_Sexo, String sexo) {
 		super();
 		Id_Sexo = id_Sexo;

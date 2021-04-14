@@ -24,6 +24,8 @@ public class Proveedor {
 	@OneToMany(mappedBy="proveedor2", fetch=FetchType.LAZY)
 	private List<Factura_Compra> factura_compra;
 	
+	public Proveedor() {}
+
 	public Proveedor(int id_Proveedor, String nombre, String correo, String direccion, String rTN) {
 		super();
 		Id_Proveedor = id_Proveedor;

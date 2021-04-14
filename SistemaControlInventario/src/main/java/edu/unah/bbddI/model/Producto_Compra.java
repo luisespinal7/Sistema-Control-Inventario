@@ -34,6 +34,8 @@ public class Producto_Compra implements Serializable{
 	@JsonBackReference
 	private Producto producto2;
 	
+	public Producto_Compra() {}
+
 	public Producto_Compra(int id_Compra, int id_Producto, float precio_unitario, int cantidad) {
 		super();
 		Id_Compra = id_Compra;

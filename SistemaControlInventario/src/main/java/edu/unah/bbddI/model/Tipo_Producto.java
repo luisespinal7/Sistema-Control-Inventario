@@ -18,6 +18,8 @@ public class Tipo_Producto {
 	@OneToMany(mappedBy="tipo_producto", fetch=FetchType.LAZY)
 	private List<Producto> producto;
 	
+	public Tipo_Producto() {}
+
 	public Tipo_Producto(int id_Tipo_Producto, String nombre_tipo_producto) {
 		super();
 		Id_Tipo_Producto = id_Tipo_Producto;

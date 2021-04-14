@@ -44,6 +44,8 @@ public class Factura_Venta {
 	@JoinColumn(name="Id_Pago")
 	@JsonBackReference
 	private Pago pago3;
+	
+	public Factura_Venta() {}
 
 	public Factura_Venta(int id_Venta, Date fecha, float subtotal, float total, boolean cancelo, Cliente cliente2,
 			Descuento descuento, Empleado empleado2, Empresa empresa2, Pago pago3) {

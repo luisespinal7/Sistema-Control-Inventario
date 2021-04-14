@@ -11,6 +11,8 @@ public class Telefono {
 	private int Id_Telefono;
 	private String numero;
 	
+	public Telefono() {}
+
 	public Telefono(int id_Telefono, String numero) {
 		super();
 		this.Id_Telefono = id_Telefono;

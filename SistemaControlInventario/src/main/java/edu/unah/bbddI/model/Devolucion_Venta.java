@@ -27,6 +27,8 @@ public class Devolucion_Venta {
 	@JoinColumn(name="Id_Empleado")
 	@JsonBackReference
 	private Empleado empleado;
+	
+	public Devolucion_Venta() {}
 
 	public Devolucion_Venta(int id_Dev_Venta, Date fecha_devolucion, float total, Cliente cliente, Empleado empleado) {
 		super();

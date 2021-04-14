@@ -18,6 +18,8 @@ public class Rol_Empleado {
 	@OneToMany(mappedBy="rol_empleado", fetch=FetchType.LAZY)
 	private List<Empleado> empleado;
 	
+	public Rol_Empleado() {}
+
 	public Rol_Empleado(int id_Rol, String rol_empleado) {
 		super();
 		Id_Rol = id_Rol;

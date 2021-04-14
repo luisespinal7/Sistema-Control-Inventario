@@ -22,6 +22,8 @@ public class Cuota {
 	@JoinColumn(name="Id_Pago")
 	@JsonBackReference
 	private Pago pago;
+	
+	public Cuota() {}
 
 	public Cuota(int id_Cuota, float total_abonado, Date fecha_pago, Pago pago) {
 		super();
@@ -62,9 +64,5 @@ public class Cuota {
 	public void setPago(Pago pago) {
 		this.pago = pago;
 	}
-	
-	
-	
-	
 
 }

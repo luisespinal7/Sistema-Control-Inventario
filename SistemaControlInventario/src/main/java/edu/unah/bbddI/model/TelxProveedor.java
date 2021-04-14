@@ -33,6 +33,8 @@ public class TelxProveedor implements Serializable{
 	@JsonBackReference
 	private Proveedor proveedor3;
 	
+	public TelxProveedor() {}
+
 	public TelxProveedor(int id_Telefono, int id_Proveedor) {
 		super();
 		Id_Telefono = id_Telefono;

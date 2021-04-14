@@ -22,6 +22,8 @@ public class Devolucion_Compra {
 	@JoinColumn(name="Id_Proveedor")
 	@JsonBackReference
 	private Proveedor proveedor;
+	
+	public Devolucion_Compra() {}
 
 	public Devolucion_Compra(int id_Dev_Compra, Date fecha_devolucion, float total, Proveedor proveedor) {
 		super();
