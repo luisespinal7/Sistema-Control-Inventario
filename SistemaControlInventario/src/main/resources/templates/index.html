@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -465,10 +465,10 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="post">
+							<form th:action="@{/proveedor/crearProveedor}" method="post">
 								<div class="form-group">
 									<label for="id">Id Proveedor:</label> <input type="text"
-										class="form-control" name="id" id="idCliente"
+										class="form-control" name="id" id="idProveedor"
 										placeholder="Ingresa el id del proveedor"> <small
 										id="emailHelp" class="form-text text-muted">Es
 										obligatorio.</small>
@@ -476,12 +476,12 @@
 
 								<div class="form-group">
 									<label for="nombre">Nombre:</label> <input type="text"
-										class="form-control" name="nombre" id="nombreCliente"
+										class="form-control" name="nombre" id="nombreProveedor"
 										placeholder="Ingresa el nombre del proveedor">
 								</div>
 								<div class="form-group">
 									<label for="correo">Correo:</label> <input type="email"
-										class="form-control" name="correo" id="correoCliente"
+										class="form-control" name="correo" id="correoProveedor"
 										aria-describedby="emailHelp"
 										placeholder="Ingrese el correo del proveedor">
 								</div>
@@ -492,7 +492,7 @@
 								</div>
 								<div class="form-group">
 									<label for="telefono">RTN:</label> <input type="text"
-										class="form-control" name="telefono" id="telefono"
+										class="form-control" name="rtn" id="rtn"
 										placeholder="Ingresa el rtn del proveedor">
 								
 								<button type="submit" class="btn btn-primary">Crear</button>

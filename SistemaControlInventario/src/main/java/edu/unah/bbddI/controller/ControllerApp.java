@@ -3,38 +3,45 @@ package edu.unah.bbddI.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.unah.bbddI.model.Marca;
+import edu.unah.bbddI.model.Proveedor;
 import edu.unah.bbddI.service.ServiceMarca;
+import edu.unah.bbddI.service.ServiceProveedor;
 
 
-@RestController
+@Controller
 public class ControllerApp {
 	
 	@Autowired
-	ServiceMarca serviceMarca;
+	ServiceProveedor serviceProveedor;
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = {"/","/admin"})
 	public String paginaPrincipal() {
-		return "index";	
-	}
-
-	@GetMapping(value = "/marcas")
-	public Marca crearMarca(@RequestParam(name = "id") int idMarca,
-            					@RequestParam(name = "nombre") String nombre){
-		Marca marca = new Marca(idMarca, nombre);
-		this.serviceMarca.crear(marca);
-		return this.serviceMarca.buscar(idMarca);
+		return "index";
 	}
 	
-	@RequestMapping(value = "/listar",method=RequestMethod.GET)
-	public List<Marca> listarMarcas(){
-		return this.serviceMarca.obtenerTodos();
-		}
+	@PostMapping(value ="/proveedor/crearProveedor")
+	public String crearProveedor(@RequestParam(name = "id") int idProveedor,
+								@RequestParam(name = "nombre") String nombre,
+								@RequestParam(name = "correo") String correo,
+								@RequestParam(name = "direccion") String direccion,
+								@RequestParam(name = "rtn") String rtn) {
+		
+		Proveedor proveedor = new Proveedor();
+		proveedor.setId_Proveedor(idProveedor);
+		proveedor.setNombre(nombre);
+		proveedor.setCorreo(correo);
+		proveedor.setDireccion(direccion);
+		proveedor.setRTN(rtn);
+		serviceProveedor.crear(proveedor);
+		return "redirect:/";
+	} 
 
 }

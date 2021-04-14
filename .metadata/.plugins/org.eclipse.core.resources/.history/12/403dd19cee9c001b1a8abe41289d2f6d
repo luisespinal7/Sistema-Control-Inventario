@@ -1,0 +1,33 @@
+package edu.unah.bbddI.controller;
+
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+@Controller
+public class ControllerPaginas {
+	
+	//Pagina Principal
+	@GetMapping(value ="/")
+	public String paginaPrincipal() {
+		return "index";
+	}
+	
+	@GetMapping(value ="/barra")
+	public String barraLateral() {
+		return "index";
+	}
+
+	@GetMapping(value ="/login")
+	public String loginUsuario() {
+		return "index";
+	}
+
+	@GetMapping(value ="/navbar")
+	public String navBar() {
+		return "index";
+	}
+
+}
