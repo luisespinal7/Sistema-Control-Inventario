@@ -129,7 +129,7 @@ CONSTRAINT descuentoPK PRIMARY KEY(Id_Descuento));
 
 CREATE TABLE TIPO_PAGO(
 Id_Tipo_Pago int NOT NULL,
-nombre_tipo_Pago VARCHAR(5) UNIQUE,
+nombre_tipo_Pago VARCHAR(10) UNIQUE,
 CONSTRAINT tipoPagoPK PRIMARY KEY(Id_Tipo_Pago));
 
 CREATE TABLE PAGO(

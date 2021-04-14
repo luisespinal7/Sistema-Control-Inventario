@@ -42,7 +42,7 @@ public class Pago {
 	public Pago(int id_Pgo, float importe_total, float importe_x_cuota, int cantidad_cuotas, Date fecha_limite,
 			List<Cuota> cuota, Tipo_Pago tipo_pago) {
 		super();
-		Id_Pgo = id_Pgo;
+		Id_Pago = id_Pgo;
 		this.importe_total = importe_total;
 		this.importe_x_cuota = importe_x_cuota;
 		this.cantidad_cuotas = cantidad_cuotas;
@@ -52,11 +52,11 @@ public class Pago {
 	}
 
 	public int getId_Pgo() {
-		return Id_Pgo;
+		return Id_Pago;
 	}
 
 	public void setId_Pgo(int id_Pgo) {
-		Id_Pgo = id_Pgo;
+		Id_Pago = id_Pgo;
 	}
 
 	public float getImporte_total() {
