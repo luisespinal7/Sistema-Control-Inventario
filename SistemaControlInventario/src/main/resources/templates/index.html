@@ -1,7 +1,4 @@
-<!-- 
-* Copyright 2018 Carlos Eduardo Alfaro Orellana
-  https://www.youtube.com/c/CarlosAlfaro007
--->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,12 +11,27 @@
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/material.min.js" ></script>
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<!-- Notifications area -->
@@ -117,7 +129,7 @@
 								</a>
 							</li>
 							<li class="full-width">
-								<a href="providers.html" class="full-width">
+								<a href="proveedores.html" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-truck"></i>
 									</div>
@@ -137,12 +149,12 @@
 								</a>
 							</li>
 							<li class="full-width">
-								<a href="categories.html" class="full-width">
+								<a href="marca.html" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-label"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										CATEGORIAS
+										MARCAS
 									</div>
 								</a>
 							</li>
@@ -155,28 +167,39 @@
 								<i class="zmdi zmdi-face"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								USUARIOS
+								PROVEEDORES
 							</div>
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="admin.html" class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearProveedor">
 									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-account"></i>
+										<i class="zmdi zmdi-accounts"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										ADMINISTRADORES
+										Crear Proveedor
 									</div>
 								</a>
 							</li>
+							
 							<li class="full-width">
 								<a href="client.html" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										CLIENTES
+										Eliminar Proveedor
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										ACTUALIZAR USUARIO
 									</div>
 								</a>
 							</li>
@@ -253,6 +276,8 @@
 			</nav>
 		</div>
 	</section>
+	<!--CREAR PROVEEDOR-->
+	
 	<!-- pageContent -->
 	<section class="full-width pageContent">
 		<!-- navBar -->
@@ -281,7 +306,22 @@
 			</div>
 		</div>
 		<section class="full-width text-center" style="padding: 40px 0;">
-			<h3 class="text-center tittles">ADMINISTRACION</h3>
+			<h3 class="text-center tittles">LISTADOS GENERALES</h3>
+			<ul class="pagination">
+				<li class="page-item disabled">
+				  <span class="page-link">Proveedores</span>
+				</li>
+				<li class="page-item active" aria-current="page">
+				  <span class="page-link">Productos</span>
+				</li>
+				<li class="page-item">
+				  <a class="page-link" href="#">Clientes</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">Marcas</a>
+				  </li>
+			  </ul>
+			
 			<!-- Tiles -->
 			<article class="full-width tile">
 				<div class="tile-text">
@@ -308,16 +348,16 @@
 						<small>Proveedores</small>
 					</span>
 				</div>
-				<a href="client.html"><i class="zmdi zmdi-truck tile-icon"></i></a>
+				<a href="proveedores.html"><i class="zmdi zmdi-truck tile-icon"></i></a>
 			</article>
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
 						9<br>
-						<small>Categorias</small>
+						<small>Marcas</small>
 					</span>
 				</div>
-				<a href="client.html"><i class="zmdi zmdi-label tile-icon"></i></a>
+				<a href="marca.html"><i class="zmdi zmdi-label tile-icon"></i></a>
 			</article>
 			<article class="full-width tile">
 				<div class="tile-text">
@@ -326,7 +366,7 @@
 						<small>Productos</small>
 					</span>
 				</div>
-				<a href="client.html"><i class="zmdi zmdi-washing-machine tile-icon"></i></a>
+				<a href="productos.html"><i class="zmdi zmdi-washing-machine tile-icon"></i></a>
 			</article>
 			<article class="full-width tile">
 				<div class="tile-text">
@@ -409,7 +449,61 @@
 	                </div>
 	            </div>
 			</div>
+			<!-- Button trigger modal -->
+
+  <!-- Modal PROVEEDOR -->
+  <div class="modal fade" id="crearProveedor" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form method="post">
+								<div class="form-group">
+									<label for="id">Id Proveedor:</label> <input type="text"
+										class="form-control" name="id" id="idCliente"
+										placeholder="Ingresa el id del proveedor"> <small
+										id="emailHelp" class="form-text text-muted">Es
+										obligatorio.</small>
+								</div>
+
+								<div class="form-group">
+									<label for="nombre">Nombre:</label> <input type="text"
+										class="form-control" name="nombre" id="nombreCliente"
+										placeholder="Ingresa el nombre del proveedor">
+								</div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="email"
+										class="form-control" name="correo" id="correoCliente"
+										aria-describedby="emailHelp"
+										placeholder="Ingrese el correo del proveedor">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="direccion"
+										placeholder="Ingresa la direccion del proveedor">
+								</div>
+								<div class="form-group">
+									<label for="telefono">RTN:</label> <input type="text"
+										class="form-control" name="telefono" id="telefono"
+										placeholder="Ingresa el rtn del proveedor">
+								
+								<button type="submit" class="btn btn-primary">Crear Proveedor</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</section>
+
+	
 </body>
+
 </html>
