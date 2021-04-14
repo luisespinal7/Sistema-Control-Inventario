@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "PAGO")
 public class Pago {
 	@Id
-	private int Id_Pgo;
+	private int Id_Pago;
 	private float importe_total;
 	private float importe_x_cuota;
 	private int cantidad_cuotas;
