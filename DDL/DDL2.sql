@@ -118,6 +118,7 @@ CONSTRAINT proveedorPK PRIMARY KEY(Id_Proveedor));
 CREATE TABLE PRODUCTOSPROVEEDORES(
 Id_Producto int NOT NULL,
 Id_Proveedor int NOT NULL,
+CONSTRAINT productosproveedoresPK PRIMARY KEY(Id_Producto,Id_Proveedor),
 CONSTRAINT productoProFK FOREIGN KEY(Id_Producto) REFERENCES PRODUCTO(Id_Producto),
 CONSTRAINT proveedorProductoFK FOREIGN KEY(Id_Proveedor) REFERENCES PROVEEDOR(Id_Proveedor));
 
