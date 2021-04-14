@@ -12,24 +12,26 @@ import javax.persistence.Table;
 @Table(name = "MARCA")
 public class Marca {
 	@Id
-	private int Marca;
+	private int Id_Marca;
 	private String nombre_marca;
 	
 	@OneToMany(mappedBy="marca", fetch=FetchType.LAZY)
 	private List<Producto> producto;
 	
+	public Marca() {}
+	
 	public Marca(int marca, String nombre_marca) {
 		super();
-		Marca = marca;
+		Id_Marca = marca;
 		this.nombre_marca = nombre_marca;
 	}
 
-	public int getMarca() {
-		return Marca;
+	public int getmarca() {
+		return Id_Marca;
 	}
 
-	public void setMarca(int marca) {
-		Marca = marca;
+	public void setId_Marca(int marca) {
+		Id_Marca = marca;
 	}
 
 	public String getNombre_marca() {
