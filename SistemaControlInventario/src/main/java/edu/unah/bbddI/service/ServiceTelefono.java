@@ -24,4 +24,8 @@ public class ServiceTelefono {
 	public List<Telefono> obtenerTodos(){
 		return this.repositoryTelefono.findAll();
 	}
+	
+	public int buscarxNumero(String numero) {
+		return this.repositoryTelefono.buscarxNumero(numero);
+	}
 }

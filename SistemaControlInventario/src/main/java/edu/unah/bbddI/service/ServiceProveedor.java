@@ -24,4 +24,11 @@ public class ServiceProveedor {
 	public List<Proveedor> obtenerTodos(){
 		return this.repositoryProveedor.findAll();
 	}
+	
+	public int buscarxNombre(String nombre) {
+		return this.repositoryProveedor.buscarxNombre(nombre);
+	}
+	
 }
+
+
