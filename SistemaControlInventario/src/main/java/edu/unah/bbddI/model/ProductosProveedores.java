@@ -19,6 +19,7 @@ public class ProductosProveedores {
 	private int Id_Producto;
 	@Id
 	private int Id_Proveedor;
+	private float precio_compra;
 	
 	@ManyToOne
 	@JoinColumn(name="Id_Producto", referencedColumnName="Id_Producto", insertable = false, updatable = false)
@@ -30,10 +31,11 @@ public class ProductosProveedores {
 	@JsonBackReference
 	private Proveedor proveedor4;
 
-	public ProductosProveedores(int id_Producto, int id_Proveedor, Producto producto5, Proveedor proveedor4) {
+	public ProductosProveedores(int id_Producto, int id_Proveedor, float precio_compra1, Producto producto5, Proveedor proveedor4) {
 		super();
 		Id_Producto = id_Producto;
 		Id_Proveedor = id_Proveedor;
+		precio_compra = precio_compra1;
 		this.producto5 = producto5;
 		this.proveedor4 = proveedor4;
 	}
@@ -54,6 +56,15 @@ public class ProductosProveedores {
 
 	public void setId_Proveedor(int id_Proveedor) {
 		Id_Proveedor = id_Proveedor;
+	}
+	
+
+	public float getPrecio_compra() {
+		return precio_compra;
+	}
+
+	public void setPrecio_compra(float precio_compra) {
+		this.precio_compra = precio_compra;
 	}
 
 	public Producto getProducto5() {

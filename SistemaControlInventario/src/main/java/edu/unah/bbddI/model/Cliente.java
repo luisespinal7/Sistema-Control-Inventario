@@ -15,7 +15,7 @@ public class Cliente {
 	private int Id_Cliente;
 	private String p_nombre;
 	private String s_nombre;
-	private String p_apelido;
+	private String p_apellido;
 	private String s_apellido;
 	private String correo;
 	private String DNI;
@@ -35,7 +35,7 @@ public class Cliente {
 		Id_Cliente = id_Cliente;
 		this.p_nombre = p_nombre;
 		this.s_nombre = s_nombre;
-		this.p_apelido = p_apelido;
+		this.p_apellido = p_apelido;
 		this.s_apellido = s_apellido;
 		this.correo = correo;
 		DNI = dNI;
@@ -66,12 +66,12 @@ public class Cliente {
 		this.s_nombre = s_nombre;
 	}
 
-	public String getP_apelido() {
-		return p_apelido;
+	public String getP_apellido() {
+		return p_apellido;
 	}
 
-	public void setP_apelido(String p_apelido) {
-		this.p_apelido = p_apelido;
+	public void setP_apellido(String p_apelido) {
+		this.p_apellido = p_apelido;
 	}
 
 	public String getS_apellido() {

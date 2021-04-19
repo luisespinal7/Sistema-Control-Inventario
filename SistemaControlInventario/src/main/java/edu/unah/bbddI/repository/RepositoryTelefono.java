@@ -13,5 +13,4 @@ public interface RepositoryTelefono extends JpaRepository<Telefono,Integer>{
 	@Transactional
 	@Query(value="select Id_Telefono from telefono where numero = ?1", nativeQuery=true)
 	public int buscarxNumero(String numero);
-
 }

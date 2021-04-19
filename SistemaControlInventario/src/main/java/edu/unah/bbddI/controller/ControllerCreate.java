@@ -160,8 +160,8 @@ public class ControllerCreate {
 								@RequestParam(name = "tipo") int tipo) {
 		
 		Tipo_Pago tipoPago = serviceTipo_Pago.buscar(tipo);
-		Pago pago = new Pago (idPago, iTotal, iCuota, cuotas, fechaLimite, tipoPago);
-		servicePago.crear(pago);
+		//Pago pago = new Pago (idPago, iTotal, iCuota, cuotas, fechaLimite, tipoPago);
+		//servicePago.crear(pago);
 		return "redirect:/";
 	} 
 	

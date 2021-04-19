@@ -1,0 +1,47 @@
+package edu.unah.bbddI.model;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TIPO_PRODUCTO")
+public class Tipo_Producto {
+	@Id
+	private int Id_Tipo_Producto;
+	private String nombre;
+	
+	@OneToMany(mappedBy="tipo_producto", fetch=FetchType.LAZY)
+	private List<Producto> producto;
+	
+	public Tipo_Producto() {}
+
+	public Tipo_Producto(int id_Tipo_Producto, String nombre_tipo_producto) {
+		super();
+		Id_Tipo_Producto = id_Tipo_Producto;
+		this.nombre = nombre_tipo_producto;
+	}
+
+	public int getId_Tipo_Producto() {
+		return Id_Tipo_Producto;
+	}
+
+	public void setId_Tipo_Producto(int id_Tipo_Producto) {
+		Id_Tipo_Producto = id_Tipo_Producto;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre_tipo_producto) {
+		this.nombre = nombre_tipo_producto;
+	}
+	
+	
+	
+}

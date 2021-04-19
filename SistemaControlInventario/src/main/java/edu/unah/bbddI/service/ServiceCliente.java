@@ -24,5 +24,9 @@ public class ServiceCliente {
 	public List<Cliente> obtenerTodos(){
 		return this.repositoryCliente.findAll();
 	}
+	
+	public int buscarxNombre(String nombre) {
+		return this.repositoryCliente.buscarxNombre(nombre);
+	}
 
 }
