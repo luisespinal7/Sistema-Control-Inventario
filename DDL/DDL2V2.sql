@@ -240,18 +240,39 @@ CREATE TABLE PRODUCTOPROVEEDORES(
 	CONSTRAINT ProductoxProveedorPK PRIMARY KEY(Id_Producto,Id_Proveedor),
     CONSTRAINT proveedor_productoFK FOREIGN KEY(Id_Producto) REFERENCES producto(Id_Producto),
     CONSTRAINT producto_proveedorFK FOREIGN KEY(Id_Proveedor) REFERENCES Proveedor(Id_Proveedor)
-)
+);
+	
+CREATE TABLE ROLES(
+Id_Role INT NOT NULL AUTO_INCREMENT,
+role VARCHAR(50),
+CONSTRAINT RolesPK PRIMARY KEY(Id_Role)
+);								    
+								    
+CREATE TABLE USUARIO(
+Id_Usuario INT NOT NULL AUTO_INCREMENT,
+nomUsuario VARCHAR(25) NOT NULL UNIQUE,
+contrasena VARCHAR(25) NOT NULL,
+enabled INT NOT NULL,
+Id_Role INT NOT NULL,
+CONSTRAINT usuarioPK PRIMARY KEY(Id_Usuario),
+CONSTRAINT roleFK FOREIGN KEY(Id_Role) REFERENCES ROLES(Id_Role)
+);
+
+INSERT INTO ROLES(role) VALUES("USER"); /* Permite acceso sin modificar registros. */
+INSERT INTO ROLES(role) VALUES("CREATOR"); /* Permite acceso para crear registros. */
+INSERT INTO ROLES(role) VALUES("EDITOR"); /* Permite acceso para modificar registros. */
+INSERT INTO ROLES(role) VALUES("ADMIN"); /* Permite acceso para todo tipo de acciones. */								    
 
 USE CONTROL_INVENTARIO;
-show tables
+show tables;
 
-delete from cliente where Id_Cliente = 1
-select * from cliente
-select * from telxcliente
-select * from telefono
-select * from proveedor
+delete from cliente where Id_Cliente = 1;
+select * from cliente;
+select * from telxcliente;
+select * from telefono;
+select * from proveedor;
 
-select * from telxproveedor
-delete from proveedor where Id_Proveedor = 2
-delete from telefono where Id_Telefono = 1
-delete from telxproveedor where Id_Proveedor = 2
+select * from telxproveedor;
+delete from proveedor where Id_Proveedor = 2;
+delete from telefono where Id_Telefono = 1;
+delete from telxproveedor where Id_Proveedor = 2;
