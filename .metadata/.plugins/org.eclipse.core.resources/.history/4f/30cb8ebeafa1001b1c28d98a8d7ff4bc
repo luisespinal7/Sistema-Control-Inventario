@@ -1,0 +1,79 @@
+			<template>
+			<div class="modal fade" id="crearProducto" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear
+								Producto</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/producto/crearProducto}" method="post">
+								
+
+								<div class="form-group">
+									<label for="nombre">Nombre:</label> <input type="text"
+										class="form-control" name="nombreProducto" id="nombreProducto"
+										placeholder="Ingresa el nombre del producto">
+								</div>
+								<div class="form-group">
+									<label for="nombre">Fecha Caducidad:</label> <input type="date"
+										class="form-control" name="fechaCaducidad" id="fechaCaducidad"
+										placeholder="Ingresa la fecha de Caducidad del producto">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Precio Venta:</label> <input type="text"
+										class="form-control" name="precio" id="precio"
+										placeholder="Precio del Producto">
+								</div>
+								<div class="form-group">
+									<label for="telefono">Unidad Medida:</label> <input type="text"
+										class="form-control" name="unidadMedida" id="unidadMedida"
+										placeholder="Ingrese la unidad de Medida">
+								</div>
+								<div class="form-group">
+									<label for="rtn">Cantidad Existente:</label> <input type="text"
+										class="form-control" name="cantidadExistente" id="rtn"
+										placeholder="Cantidad Existente de Productos">
+								</div>
+
+								<div class="form-group"><label for="tipo">Tipo Producto: </label>
+								<select class="form-select form-select-sm" id="tipo" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option value="1">Tipo 1</option>
+									<option value="2">Tipo 2</option>
+									<option value="3">Tipo 3</option>
+								  </select>
+								</div>
+
+								  <div class="form-group"><label for="seccion">Seccion Producto: </label>
+								<select class="form-select form-select-sm" id="seccion" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option value="1">Seccion 1</option>
+									<option value="2">Seccion 2</option>
+									<option value="3">Seccion 3</option>
+								  </select>
+								</div>
+
+								<div class="form-group"><label for="marca">Marca Producto: </label>
+									<select class="form-select form-select-sm" id="marca" aria-label=".form-select-sm example">
+										<option selected>Seleccione una opcion</option>
+										<option value="1">Marca 1</option>
+										<option value="2">Marca 2</option>
+										<option value="3">Marca 3</option>
+									  </select>
+									</div>
+
+
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</template>

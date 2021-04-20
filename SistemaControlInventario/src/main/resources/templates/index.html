@@ -962,55 +962,55 @@ xmlns:th="http://www.thymeleaf.org">
 								
 
 								<div class="form-group">
-									<label for="nombre">Nombre:</label> <input type="text"
+									<label for="nombreProducto">Nombre:</label> <input type="text"
 										class="form-control" name="nombreProducto" id="nombreProducto"
 										placeholder="Ingresa el nombre del producto">
 								</div>
 								<div class="form-group">
-									<label for="nombre">Fecha Caducidad:</label> <input type="date"
+									<label for="fechaCaducidad">Fecha Caducidad:</label> <input type="date"
 										class="form-control" name="fechaCaducidad" id="fechaCaducidad"
 										placeholder="Ingresa la fecha de Caducidad del producto">
 								</div>
 								<div class="form-group">
-									<label for="direccion">Precio Venta:</label> <input type="text"
+									<label for="precio">Precio Venta:</label> <input type="text"
 										class="form-control" name="precio" id="precio"
 										placeholder="Precio del Producto">
 								</div>
 								<div class="form-group">
-									<label for="telefono">Unidad Medida:</label> <input type="text"
+									<label for="unidadMedida">Unidad Medida:</label> <input type="text"
 										class="form-control" name="unidadMedida" id="unidadMedida"
 										placeholder="Ingrese la unidad de Medida">
 								</div>
 								<div class="form-group">
-									<label for="rtn">Cantidad Existente:</label> <input type="text"
-										class="form-control" name="cantidadExistente" id="rtn"
+									<label for="cantidadExistente">Cantidad Existente:</label> <input type="text"
+										class="form-control" name="cantidadExistente" id="cantidadExistente"
 										placeholder="Cantidad Existente de Productos">
+								</div>
+								
+								<div class="form-group">
+									<label for="codigoBarra">Codigo de barra: </label> <input type="text"
+										class="form-control" name="codigoBarra" id="codigoBarra"
+										placeholder="Codigo de barra del producto">
 								</div>
 
 								<div class="form-group"><label for="tipo">Tipo Producto: </label>
-								<select class="form-select form-select-sm" id="tipo" aria-label=".form-select-sm example">
+								<select class="form-select form-select-sm" id="tipo" name="tipo" aria-label=".form-select-sm example">
 									<option selected>Seleccione una opcion</option>
-									<option value="1">Tipo 1</option>
-									<option value="2">Tipo 2</option>
-									<option value="3">Tipo 3</option>
+									<option th:each="tmpTP:${tiposDeProductos}" th:value="${tmpTP.Id_Tipo_Producto}" th:text="${tmpTP.nombre_tipo_producto}"></option>
 								  </select>
 								</div>
 
 								  <div class="form-group"><label for="seccion">Seccion Producto: </label>
-								<select class="form-select form-select-sm" id="seccion" aria-label=".form-select-sm example">
+								<select class="form-select form-select-sm" id="seccion" name="seccion" aria-label=".form-select-sm example">
 									<option selected>Seleccione una opcion</option>
-									<option value="1">Seccion 1</option>
-									<option value="2">Seccion 2</option>
-									<option value="3">Seccion 3</option>
+									<option th:each="tmpSP:${seccionesDeProductos}" th:value="${tmpSP.Id_Seccion_Producto}" th:text="${tmpSP.nombre_seccion_producto}"></option>
 								  </select>
 								</div>
 
 								<div class="form-group"><label for="marca">Marca Producto: </label>
-									<select class="form-select form-select-sm" id="marca" aria-label=".form-select-sm example">
+									<select class="form-select form-select-sm" id="marca" name="marca" aria-label=".form-select-sm example">
 										<option selected>Seleccione una opcion</option>
-										<option value="1">Marca 1</option>
-										<option value="2">Marca 2</option>
-										<option value="3">Marca 3</option>
+										<option th:each="tmpMP:${marcasDeProductos}" th:value="${tmpMP.Id_Marca}" th:text="${tmpMP.nombre_marca}"></option>
 									  </select>
 									</div>
 

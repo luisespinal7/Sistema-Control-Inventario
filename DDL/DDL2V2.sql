@@ -102,6 +102,7 @@ cantidad_media CHAR(5),
 Id_Tipo_Producto INT,
 Id_Seccion_Producto INT,
 Id_Marca INT,
+codigo_barra varchar(30),
 CONSTRAINT productoPK PRIMARY KEY(Id_Producto),
 CONSTRAINT tipo_productoFK FOREIGN KEY(Id_Tipo_Producto) REFERENCES TIPO_PRODUCTO(Id_Tipo_Producto),
 CONSTRAINT seccion_productoFK FOREIGN KEY(Id_Seccion_Producto) REFERENCES SECCION_PRODUCTO(Id_Seccion_Producto),
@@ -249,9 +250,33 @@ delete from cliente where Id_Cliente = 1
 select * from cliente
 select * from telxcliente
 select * from telefono
+select * from telxproveedor
 select * from proveedor
+select * from marca
+select * from sexo
+select * from Tipo_producto
+select * from marca
+select * from seccion_producto
+select * from producto
+
+alter table producto drop column codigo_barra varchar(30)
+
+insert into marca (nombre_marca) values("Salva vida")
 
 select * from telxproveedor
 delete from proveedor where Id_Proveedor = 2
 delete from telefono where Id_Telefono = 1
 delete from telxproveedor where Id_Proveedor = 2
+
+select Id_Telefono from telefono where numero = "dw2d"
+
+-- Auten -----------------------------
+
+SELECT * FROM mysql. User
+select current_role(user) from mysql. User where user = "sofia"
+
+SHOW GRANTS FOR 'jorge'@'%';
+
+SHOW GRANTS FOR 'username'@'localhost';
+
+select host, user, password from mysql.user;

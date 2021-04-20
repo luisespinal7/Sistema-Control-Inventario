@@ -1,0 +1,1418 @@
+
+<!DOCTYPE html>
+<html lang="es"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin - La Despensa de Sofy</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/sweetalert2.css">
+	<link rel="stylesheet" href="css/material.min.css">
+	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<style>
+        th,td {
+            padding: 0.4rem !important;
+        }
+        body>div {
+            box-shadow: 10px 10px 8px #888888;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="js/material.min.js" ></script>
+	<script src="js/sweetalert2.min.js" ></script>
+	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="js/main.js" ></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<!-- Notifications area -->
+	<section class="full-width container-notifications">
+		<div class="full-width container-notifications-bg btn-Notification"></div>
+	    <section class="NotificationArea">
+	        <div class="full-width text-center NotificationArea-title tittles">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+	        <a href="#" class="Notification" id="notifation-unread-1">
+	            <div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle"></i>
+	                    <strong>Nuevo Usuario</strong> 
+	                    <br>
+	                    <small>Ahora</small>
+	                </p>
+	            </div>
+	        	<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notificaciones no leidas</div> 
+	        </a>
+	        <a href="#" class="Notification" id="notifation-read-1">
+	            <div class="Notification-icon"><i class="zmdi zmdi-cloud-download bg-primary"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle-o"></i>
+	                    <strong>Nueva Actualizacion</strong> 
+	                    <br>
+	                    <small>30 Atrás</small>
+	                </p>
+	            </div>
+	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-1">Notificaciones Leidas</div>
+	        </a>
+	        <a href="#" class="Notification" id="notifation-unread-2">
+	            <div class="Notification-icon"><i class="zmdi zmdi-upload bg-success"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle"></i>
+	                    <strong>Archivo Subido</strong> 
+	                    <br>
+	                    <small>31 Atrás</small>
+	                </p>
+	            </div>
+	            </a>   
+	    </section>
+	</section>
+	<!-- navLateral -->
+	<section class="full-width navLateral">
+		<div class="full-width navLateral-bg btn-menu"></div>
+		<div class="full-width navLateral-body">
+			<div class="full-width navLateral-body-logo text-center tittles">
+				<i class="zmdi zmdi-close btn-menu"></i> La Despensa de Sofy 
+			</div>
+			<figure class="full-width navLateral-body-tittle-menu">
+				<div>
+					<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+				</div>
+				<figcaption>
+					<span>
+						Sofia Gineth Videa<br>
+						<small>Administrador</small>
+					</span>
+				</figcaption>
+			</figure>
+			<nav class="full-width">
+				<ul class="full-width list-unstyle menu-principal">
+					<li class="full-width">
+						<a href="home.html" class="full-width">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-view-dashboard"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								INICIO
+							</div>
+						</a>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								CLIENTES
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearCliente">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Crear Cliente
+									</div>
+								</a>
+							</li>
+							
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#eliminarCliente">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Eliminar Cliente
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#actualizarCliente">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr form-group">
+										  <label for="id">Actualizar Cliente</label>
+									  </div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								PROVEEDORES
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearProveedor">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Crear Proveedor
+									</div>
+								</a>
+							</li>
+							<!--
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#eliminarProveedor">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Eliminar Proveedor
+									</div>
+								</a>
+							</li>
+							-->
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#actualizarProveedor">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr form-group">
+										  <label for="id">Actualizar Proveedor</label>
+									  </div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					
+
+
+
+
+					<li class="full-width">
+						<a class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								PRODUCTOS
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a class="full-width btn-subMenu">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-face"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										TIPOS DE PRODUCTO
+									</div>
+									<span class="zmdi zmdi-chevron-left"></span>
+								</a>
+								<ul class="full-width menu-principal sub-menu-options">
+									<li class="full-width">
+										<a class="full-width" data-toggle="modal" data-target="#crearTipo">
+											<div class="navLateral-body-cl">
+												<i class="zmdi zmdi-accounts"></i>
+											</div>
+											<div class="navLateral-body-cr">
+												Crear Tipo
+											</div>
+										</a>
+									</li>
+									<li class="full-width">
+										<a class="full-width" data-toggle="modal" data-target="#eliminarTipo">
+											<div class="navLateral-body-cl">
+												<i class="zmdi zmdi-accounts"></i>
+											</div>
+											<div class="navLateral-body-cr">
+												Eliminar Tipo
+											</div>
+										</a>
+									</li>
+									<li class="full-width">
+										<a class="full-width" data-toggle="modal" data-target="#actualizarTipo">
+											<div class="navLateral-body-cl">
+												<i class="zmdi zmdi-accounts"></i>
+											</div>
+											<div class="navLateral-body-cr form-group">
+												  <label for="id">Actualizar Tipo</label>
+											  </div>
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearProducto">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Crear Producto
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#productoProveedor">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Producto Por Proveedor
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#eliminarProducto">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Eliminar Producto
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#actualizarProducto">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr form-group">
+										  <label for="id">Actualizar Producto</label>
+									  </div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								MARCAS
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearMarca">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Crear Marca
+									</div>
+								</a>
+							</li>
+							
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#eliminarMarca">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Eliminar Marca
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#actualizarMarca">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Actualizar Marca
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								EMPLEADOS
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#crearEmpleado">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Crear Empleado
+									</div>
+								</a>
+							</li>
+							
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#eliminarEmpleado">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Eliminar Empleado
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a class="full-width" data-toggle="modal" data-target="#actualizarEmpleado">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Actualizar Empleado
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<!--CREAR PROVEEDOR-->
+	
+	<!-- pageContent -->
+	<section class="full-width pageContent">
+		<!-- navBar -->
+		<div class="full-width navBar">
+			<div class="full-width navBar-options">
+				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
+				<div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar MENU</div>
+				<nav class="navBar-options-list">
+					<ul class="list-unstyle">
+						<li class="btn-Notification" id="notifications">
+							<i class="zmdi zmdi-notifications"></i>
+							<div class="mdl-tooltip" for="notifications">Notificaciones</div>
+						</li>
+						<li class="btn-exit" id="btn-exit">
+							<i class="zmdi zmdi-power"></i>
+							<div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+						</li>
+						<li class="text-condensedLight noLink" ><small>Sofia Videa</small></li>
+						<li class="noLink">
+							<figure>
+								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+							</figure>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<section class="full-width text-center" style="padding: 40px 0;">
+			<h3 class="text-center tittles">LISTADOS GENERALES</h3>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 ">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<li class="page-item"><a class="page-link"
+								href="index.html">Inicio</a></li>
+							<li class="page-item"><a class="page-link"
+								th:href="@{/proveedores/listaProveedores}">Proveedores</a></li>
+							<li class="page-item"><a class="page-link"
+								href="productos.html">Productos</a></li>
+							<li class="page-item"><a class="page-link"
+								href="clientes.html">Clientes</a></li>
+							<li class="page-item"><a class="page-link"
+								href="empleados.html">Empleados</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						2<br>
+						<small>Administradores</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-account tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						71<br>
+						<small>Clientes</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-accounts tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						7<br>
+						<small>Proveedores</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-truck tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						9<br>
+						<small>Marcas</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-label tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						121<br>
+						<small>Productos</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-washing-machine tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						47<br>
+						<small>Ventas</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-shopping-cart tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						9<br>
+						<small>Deudas</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-label tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						9<br>
+						<small>Créditos</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-label tile-icon"></i></a>
+			</article>
+		</section>
+		
+			<!-- Button trigger modal -->
+
+  <!-- MODAL PARA LOS PROVEEDORES-->
+  <!-- M O D A L     D E    L O S    C L I E N T E S-->
+
+			<!--CREAR CLIENTE-->
+			<div class="modal fade" id="crearCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/cliente/crearCliente}" method="post">
+
+								<div class="input-group">
+									<span class="input-group-text">Primer y Segundo Nombre</span>
+									<input type="text" aria-label="p_nombre" name="p_nombre" id="p_nombre" class="form-control">
+									<input type="text" aria-label="s_nombre" name="s_nombre" id="s_nombre" class="form-control">
+								  </div>
+								  <div class="input-group">
+									<span class="input-group-text">Primer y Segundo Apellido</span>
+									<input type="text" aria-label="p_apellido" name="p_apellido" id="p_apellido" class="form-control">
+									<input type="text" aria-label="s_apellido" name="s_apellido" id="s_apellido"  class="form-control">
+								  </div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="text"
+										class="form-control" name="correo" id="correo"
+										placeholder="Ingresa el correo del cliente">
+								</div>
+								<div class="form-group">
+									<label for="credito">DNI:</label> <input type="text"
+										class="form-control" name="dni" id="dni"
+										placeholder="Ingresa el DNI del cliente">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="direccion"
+										placeholder="Ingresa la direccion del cliente">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Telefono:</label> <input type="text"
+										class="form-control" name="telefono" id="telefono"
+										placeholder="Ingresa el telefono del cliente">
+								</div>
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--FINAL CREAR CLIENTE-->
+
+
+			<!--ELIMINAR CLIENTE-->
+			<div class="modal fade" id="eliminarCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/Cliente/eliminarCliente}" method="post">
+								<div class="form-group">
+									<label for="id">Id Cliente:</label> <input type="text"
+										class="form-control" name="id" id="idCliente"
+										placeholder="Id del cliente a eliminar">
+								</div>
+								<button type="submit" class="btn btn-primary">Eliminar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ELIMINAR CLIENTE-->
+
+
+			<!--ACTUALIZAR CLIENTE-->
+			<div class="modal fade" id="actualizarCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Actualizar Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/cliente/actualizarCliente}" method="post">
+								<div class="form-group">
+									<label for="credito">Id Cliente:</label> <input type="text"
+										class="form-control" name="id" id="id">
+								</div>
+								<div class="input-group">
+									<span class="input-group-text">Primer y Segundo Nombre</span>
+									<input type="text" aria-label="p_nombre" name="p_nombre" id="p_nombre" class="form-control">
+									<input type="text" aria-label="s_nombre" name="s_nombre" id="s_nombre" class="form-control">
+								  </div>
+								  <div class="input-group">
+									<span class="input-group-text">Primer y Segundo Apellido</span>
+									<input type="text" aria-label="p_apellido" name="p_apellido" id="p_apellido" class="form-control">
+									<input type="text" aria-label="s_apellido" name="s_apellido" id="s_apellido"  class="form-control">
+								  </div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="text"
+										class="form-control" name="correo" id="correo"
+										placeholder="Ingresa el correo del cliente">
+								</div>
+								<div class="form-group">
+									<label for="credito">DNI:</label> <input type="text"
+										class="form-control" name="dni" id="dni"
+										placeholder="Ingresa el DNI del cliente">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="direccion"
+										placeholder="Ingresa la direccion del cliente">
+								</div>
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ACTUALIZAR CLIENTE-->
+
+			<!--F I N A L   C L I E N T E S-->
+
+			<!-- M O D A L     D E    L O S    P R O V E E D O R E S-->
+
+			<!--CREAR PROVEEDOR-->
+			<div class="modal fade" id="crearProveedor" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear
+								Proveedor</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/proveedor/crearProveedor}" method="post">
+								
+								<div class="form-group">
+									<label for="nombre">Nombre:</label> <input type="text"
+										class="form-control" name="nombre" id="nombre"
+										placeholder="Ingresa el nombre del proveedor">
+								</div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="email"
+										aria-describedby="emailHelp" class="form-control"
+										name="correo" id="correo" placeholder="Ingresa el correo">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="telefono"
+										placeholder="Ingresa la direccion">
+								</div>
+								<div class="form-group">
+									<label for="telefono">Teléfono:</label> <input type="text"
+										class="form-control" name="telefono" id="telefono"
+										placeholder="Ingrese el telefono">
+								</div>
+								<div class="form-group">
+									<label for="rtn">RTN:</label> <input type="text"
+										class="form-control" name="rtn" id="rtn"
+										placeholder="Ingresa el RTN">
+								</div>
+								
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--FINAL CREAR PROVEEDOR-->
+
+			<!--MODAL DE LOS EMPLEADO-->
+			<!--CREAR EMPLEADO-->
+			<div class="modal fade" id="crearCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/cliente/crearCliente}" method="post">
+
+								<div class="input-group">
+									<span class="input-group-text">Primer y Segundo Nombre</span>
+									<input type="text" aria-label="p_nombre" name="p_nombre" id="p_nombre" class="form-control">
+									<input type="text" aria-label="s_nombre" name="s_nombre" id="s_nombre" class="form-control">
+								  </div>
+								  <div class="input-group">
+									<span class="input-group-text">Primer y Segundo Apellido</span>
+									<input type="text" aria-label="p_apellido" name="p_apellido" id="p_apellido" class="form-control">
+									<input type="text" aria-label="s_apellido" name="s_apellido" id="s_apellido"  class="form-control">
+								  </div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="text"
+										class="form-control" name="correo" id="correo"
+										placeholder="Ingresa el correo del cliente">
+								</div>
+								<div class="form-group">
+									<label for="credito">DNI:</label> <input type="text"
+										class="form-control" name="dni" id="dni"
+										placeholder="Ingresa el DNI del cliente">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="direccion"
+										placeholder="Ingresa la direccion del cliente">
+								</div>
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--FINAL CREAR EMPLEADO-->
+
+
+			<!--ELIMINAR EMPLEADO-->
+			<div class="modal fade" id="eliminarCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/Cliente/eliminarCliente}" method="post">
+								<div class="form-group">
+									<label for="id">Id Cliente:</label> <input type="text"
+										class="form-control" name="id" id="idCliente"
+										placeholder="Id del cliente a eliminar">
+								</div>
+								<button type="submit" class="btn btn-primary">Eliminar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ELIMINAR EMPLEADO-->
+
+
+			<!--ACTUALIZAR EMPLEADO-->
+			<div class="modal fade" id="actualizarCliente" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Actualizar Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/cliente/actualizarCliente}" method="post">
+								<div class="form-group">
+									<label for="credito">Id Cliente:</label> <input type="text"
+										class="form-control" name="id" id="id">
+								</div>
+								<div class="input-group">
+									<span class="input-group-text">Primer y Segundo Nombre</span>
+									<input type="text" aria-label="p_nombre" name="p_nombre" id="p_nombre" class="form-control">
+									<input type="text" aria-label="s_nombre" name="s_nombre" id="s_nombre" class="form-control">
+								  </div>
+								  <div class="input-group">
+									<span class="input-group-text">Primer y Segundo Apellido</span>
+									<input type="text" aria-label="p_apellido" name="p_apellido" id="p_apellido" class="form-control">
+									<input type="text" aria-label="s_apellido" name="s_apellido" id="s_apellido"  class="form-control">
+								  </div>
+								<div class="form-group">
+									<label for="correo">Correo:</label> <input type="text"
+										class="form-control" name="correo" id="correo"
+										placeholder="Ingresa el correo del cliente">
+								</div>
+								<div class="form-group">
+									<label for="credito">DNI:</label> <input type="text"
+										class="form-control" name="dni" id="dni"
+										placeholder="Ingresa el DNI del cliente">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Direccion:</label> <input type="text"
+										class="form-control" name="direccion" id="direccion"
+										placeholder="Ingresa la direccion del cliente">
+								</div>
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ACTUALIZAR EMPLEADO-->
+
+
+			<!--ELIMINAR PROVEEDOR
+			<div class="modal fade" id="eliminarProveedor" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Eliminar Proveedor</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/Cliente/eliminarProveedor}" method="post">
+								<div class="form-group">
+									<label for="id">Id Proveedor:</label> <input type="text"
+										class="form-control" name="id" id="idCliente"
+										placeholder="Id del proveedor a eliminar">
+								</div>
+								<button type="submit" class="btn btn-primary">Eliminar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			-->
+			<!--FINAL ELIMINAR PROVEEDOR-->
+
+			<!--ACTUALIZAR PROVEEDOR-->
+			<!--Crear Proveedor-->
+			<div class="modal fade" id="actualizarProveedor" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Actualizar
+							Proveedor</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/proveedor/actualizarProveedor}" method="post">
+							
+							<div class="form-group">
+								<label for="nombre">Id:</label> <input type="text"
+									class="form-control" name="id" id="id"
+									placeholder="Ingresa el id del proveedor">
+							</div>
+							<div class="form-group">
+								<label for="nombre">Nombre:</label> <input type="text"
+									class="form-control" name="nombre" id="nombre"
+									placeholder="Ingresa el nombre del proveedor">
+							</div>
+							<div class="form-group">
+								<label for="correo">Correo:</label> <input type="email"
+									aria-describedby="emailHelp" class="form-control"
+									name="correo" id="correo" placeholder="Ingresa el correo">
+							</div>
+							<div class="form-group">
+								<label for="direccion">Direccion:</label> <input type="text"
+									class="form-control" name="direccion" id="telefono"
+									placeholder="Ingresa la direccion">
+							</div>
+							<div class="form-group">
+								<label for="rtn">RTN:</label> <input type="text"
+									class="form-control" name="rtn" id="rtn"
+									placeholder="Ingresa el RTN">
+							</div>
+							
+							<button type="submit" class="btn btn-primary">Crear</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--Fin crear Proveedor-->
+
+			<!--FINAL ACTUALIZAR PROVEEDOR-->
+
+			<!--F I N A L   P R O V E E D O R E S-->
+			<!-- M O D A L     D E    L O S    P R O D U C T O S-->
+
+			<!--CREAR PRODUCTO-->
+			
+			<div class="modal fade" id="crearProducto" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear
+								Producto</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/producto/crearProducto}" method="post">
+								
+
+								<div class="form-group">
+									<label for="nombre">Nombre:</label> <input type="text"
+										class="form-control" name="nombreProducto" id="nombreProducto"
+										placeholder="Ingresa el nombre del producto">
+								</div>
+								<div class="form-group">
+									<label for="nombre">Fecha Caducidad:</label> <input type="date"
+										class="form-control" name="fechaCaducidad" id="fechaCaducidad"
+										placeholder="Ingresa la fecha de Caducidad del producto">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Precio Venta:</label> <input type="text"
+										class="form-control" name="precio" id="precio"
+										placeholder="Precio del Producto">
+								</div>
+								<div class="form-group">
+									<label for="telefono">Unidad Medida:</label> <input type="text"
+										class="form-control" name="unidadMedida" id="unidadMedida"
+										placeholder="Ingrese la unidad de Medida">
+								</div>
+								<div class="form-group">
+									<label for="rtn">Cantidad Existente:</label> <input type="text"
+										class="form-control" name="cantidadExistente" id="rtn"
+										placeholder="Cantidad Existente de Productos">
+								</div>
+
+								<div class="form-group"><label for="tipo">Tipo Producto: </label>
+								<select class="form-select form-select-sm" id="tipo" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option th:each="tmpTP:${tiposDeProductos}" th:value="${tmpTP.nombre_tipo_productos}" th:text="${tmpTP.nombre_tipo_productos}"></option>
+								  </select>
+								</div>
+
+								  <div class="form-group"><label for="seccion">Seccion Producto: </label>
+								<select class="form-select form-select-sm" id="seccion" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option value="1">Seccion 1</option>
+									<option value="2">Seccion 2</option>
+									<option value="3">Seccion 3</option>
+								  </select>
+								</div>
+
+								<div class="form-group"><label for="marca">Marca Producto: </label>
+									<select class="form-select form-select-sm" id="marca" aria-label=".form-select-sm example">
+										<option selected>Seleccione una opcion</option>
+										<option value="1">Marca 1</option>
+										<option value="2">Marca 2</option>
+										<option value="3">Marca 3</option>
+									  </select>
+									</div>
+
+
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<!--FINAL CREAR PRODUCTO-->
+
+			<!--PRODUCTO PROVEEDOR-->
+			<div class="modal fade" id="productoProveedor" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Producto Por Proveedor</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/producto/Producto/proveedor}" method="post">
+							<div class="form-group"><label for="producto">Producto: </label>
+								<select class="form-select form-select-sm" id="producto" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option value="1">Producto 1</option>
+									<option value="2">Producto 2</option>
+									<option value="3">Producto 3</option>
+								  </select>
+								</div>
+
+								<div class="form-group"><label for="marca">Proveedor que lo distribuye: </label>
+									<select class="form-select form-select-sm" id="marca" aria-label=".form-select-sm example">
+										<option selected>Seleccione una opcion</option>
+										<option value="1">Proveedor 1</option>
+										<option value="2">Proveedor 2</option>
+										<option value="3">Proveedor 3</option>
+									  </select>
+									</div>
+
+									<div class="form-group">
+										<label for="precioCompra">Precio Compra:</label> <input type="text"
+											class="form-control" name="precioCompra" id="precioCompra"
+											placeholder="Ingresa el precio del producto">
+									</div>
+
+							<button type="submit" class="btn btn-primary">Crear</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!--FIN PRODUCTO PROVEEDOR-->
+
+			<!--ELIMINAR PRODUCTO-->
+			<div class="modal fade" id="eliminarProducto" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/eliminarProducto}" method="post">
+								<div class="form-group">
+									<label for="id">Id Producto:</label> <input type="text"
+										class="form-control" name="id" id="idCliente"
+										placeholder="Id del producto a eliminar"> <small
+										class="form-text text-muted">Es
+										obligatorio.</small>
+								</div>
+								<button type="submit" class="btn btn-primary">Eliminar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ELIMINAR PRODUCTO-->
+
+			<!--ACTUALIZAR PRODUCTO-->
+			<div class="modal fade" id="actualizarProducto" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Actualizar
+								Producto</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/producto/actualizarProducto}" method="post">
+								
+								<div class="form-group">
+									<label for="id">Id:</label> <input type="text"
+										class="form-control" name="id" id="id">
+								</div>
+								<div class="form-group">
+									<label for="nombre">Nombre:</label> <input type="text"
+										class="form-control" name="nombreProducto" id="nombreProducto"
+										placeholder="Ingresa el nombre del producto">
+								</div>
+								<div class="form-group">
+									<label for="nombre">Fecha Caducidad:</label> <input type="date"
+										class="form-control" name="fechaCaducidad" id="fechaCaducidad"
+										placeholder="Ingresa la fecha de Caducidad del producto">
+								</div>
+								<div class="form-group">
+									<label for="direccion">Precio Venta:</label> <input type="text"
+										class="form-control" name="precio" id="precio"
+										placeholder="Precio del Producto">
+								</div>
+								<div class="form-group">
+									<label for="telefono">Unidad Medida:</label> <input type="text"
+										class="form-control" name="unidadMedida" id="unidadMedida"
+										placeholder="Ingrese la unidad de Medida">
+								</div>
+								<div class="form-group">
+									<label for="rtn">Cantidad Existente:</label> <input type="text"
+										class="form-control" name="cantidadExistente" id="rtn"
+										placeholder="Cantidad Existente de Productos">
+								</div>
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									  Tipo Producto
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									  <li><a class="dropdown-item" href="#">Tipo 1</a></li>
+									  <li><a class="dropdown-item" href="#">Tipo 2</a></li>
+									  <li><a class="dropdown-item" href="#">Tipo 3</a></li>
+									</ul>
+								  </div>
+								  <div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									  Sección Producto
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									  <li><a class="dropdown-item" href="#">Seccion 1</a></li>
+									  <li><a class="dropdown-item" href="#">Seccion 2</a></li>
+									  <li><a class="dropdown-item" href="#">Seccion 3</a></li>
+									</ul>
+								  </div>
+								  <div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									  Marca
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									  <li><a class="dropdown-item" href="#">Marca 1</a></li>
+									  <li><a class="dropdown-item" href="#">Marca 2</a></li>
+									  <li><a class="dropdown-item" href="#">Marca 3</a></li>
+									</ul>
+								  </div>
+								  <div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									  Proveedor
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									  <li><a class="dropdown-item" href="#">Proveedor 1</a></li>
+									  <li><a class="dropdown-item" href="#">Proveedor 2</a></li>
+									  <li><a class="dropdown-item" href="#">Proveedor 3</a></li>
+									</ul>
+								  </div>
+								<button type="submit" class="btn btn-primary">Crear</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FINAL ACTUALIZAR PRODUCTO-->
+
+			<!--MODAL MARCA-->
+			<!--Crear Marca-->
+<div class="modal fade" id="crearMarca" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Crear Marca</h5>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<form th:action="@{/marca/crearMarca}" method="post">
+				
+				<div class="form-group">
+					<label for="nombre">Nombre Marca:</label> <input type="text"
+						class="form-control" name="nombre" id="nombre"
+						placeholder="Ingresa el nombre de la marca">
+				</div>
+				<button type="submit" class="btn btn-primary">Crear</button>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+			<!--Fin crear Marca-->
+			<!--Eliminar Marca-->
+			<div class="modal fade" id="eliminarMarca" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Eliminar Marca</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/marca/eliminarMarca}" method="post">
+							
+							<div class="form-group">
+								<label for="nombre">Id Marca:</label> <input type="text"
+									class="form-control" name="id" id="id"
+									placeholder="Ingresa el nombre de la marca">
+							</div>
+							<button type="submit" class="btn btn-primary">Eliminar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<!--Fin Eliminar Marca-->
+			<!--Actualizar Marca-->
+			<div class="modal fade" id="actualizarMarca" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Actualizar Marca</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/marca/crearMarca}" method="post">
+							<div class="form-group">
+								<label for="id">Id:</label> <input type="text"
+									class="form-control" name="id" id="id"
+									placeholder="Ingresa el id de la marca">
+							</div>
+							<div class="form-group">
+								<label for="nombre">Nombre Marca:</label> <input type="text"
+									class="form-control" name="nombre" id="nombre"
+									placeholder="Ingresa el nombre de la marca">
+							</div>
+							<button type="submit" class="btn btn-primary">Crear</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<!--Fin Modal MARCA-->
+			<!--MODAL TIPO-->
+			<!--Crear Tipo-->
+			<div class="modal fade" id="crearTipo" tabindex="-1"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Crear Tipo</h5>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<form th:action="@{/tipo/crearTipo}" method="post">
+				
+				<div class="form-group">
+					<label for="nombre">Nombre Tipo:</label> <input type="text"
+						class="form-control" name="nombre" id="nombre"
+						placeholder="Ingresa el nombre del tipo">
+				</div>
+				<button type="submit" class="btn btn-primary">Crear</button>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+			<!--Fin crear Tipo-->
+			<!--Eliminar Tipo-->
+			<div class="modal fade" id="eliminarTipo" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Eliminar Tipo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/tipo/eliminarTipo}" method="post">
+							
+							<div class="form-group">
+								<label for="nombre">Id Tipo:</label> <input type="text"
+									class="form-control" name="id" id="id"
+									placeholder="Ingresa el nombre del tipo">
+							</div>
+							<button type="submit" class="btn btn-primary">Eliminar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<!--Fin Eliminar Tipo-->
+			<!--Actualizar Tipo-->
+			<div class="modal fade" id="actualizarTipo" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Actualizar Tipo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/tipo/actualizarTipo}" method="post">
+							<div class="form-group">
+								<label for="id">Id:</label> <input type="text"
+									class="form-control" name="id" id="id"
+									placeholder="Ingresa el id del tipo">
+							</div>
+							<div class="form-group">
+								<label for="nombre">Nombre Tipo:</label> <input type="text"
+									class="form-control" name="nombre" id="nombre"
+									placeholder="Ingresa el nombre del tipo">
+							</div>
+							<button type="submit" class="btn btn-primary">Actualizar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<!--Fin Modal MARCA-->
+		</section>
+	</section>
+
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+	</script>
+<!-- DATATABLES -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+</script>
+<!-- BOOTSTRAP -->
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+</script>
+<script>
+	$(document).ready(function () {
+		$('#tablax').DataTable({
+			language: {
+				processing: "En curso...",
+				search: "Buscar&nbsp;:",
+				lengthMenu: "Agrupar de _MENU_ items",
+				info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+				infoEmpty: "No existen datos.",
+				infoFiltered: "(filtrado de _MAX_ elementos en total)",
+				infoPostFix: "",
+				loadingRecords: "Cargando...",
+				zeroRecords: "No se encontraron datos con tu busqueda",
+				emptyTable: "No hay datos disponibles en la tabla.",
+				paginate: {
+					first: "Primero",
+					previous: "Anterior",
+					next: "Siguiente",
+					last: "Ultimo"
+				},
+				aria: {
+					sortAscending: ": active para ordenar la columna en orden ascendente",
+					sortDescending: ": active para ordenar la columna en orden descendente"
+				}
+			},
+			scrollY: 400,
+			lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+		});
+	});
+</script>
+
+</body>
+
+</html>

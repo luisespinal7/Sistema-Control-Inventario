@@ -26,12 +26,23 @@ public class Marca {
 		this.nombre_marca = nombre_marca;
 	}
 
-	public int getmarca() {
+	
+	
+
+	public int getId_Marca() {
 		return Id_Marca;
 	}
 
-	public void setId_Marca(int marca) {
-		Id_Marca = marca;
+	public void setId_Marca(int id_Marca) {
+		Id_Marca = id_Marca;
+	}
+
+	public List<Producto> getProducto() {
+		return producto;
+	}
+
+	public void setProducto(List<Producto> producto) {
+		this.producto = producto;
 	}
 
 	public String getNombre_marca() {

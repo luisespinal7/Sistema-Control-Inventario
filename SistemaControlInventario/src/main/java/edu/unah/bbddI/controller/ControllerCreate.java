@@ -217,8 +217,8 @@ public class ControllerCreate {
 		Seccion_Producto seccion = serviceSeccion.buscar(idseccion);
 		Tipo_Producto tipo = serviceTipoProducto.buscar(idtipo);
 		Marca marca = serviceMarca.buscar(idmarca);
-		Producto producto = new Producto(idProducto, nombre, vence, precio, medida, disponibles, media, tipo, seccion, marca);
-		serviceProducto.crear(producto);
+		//Producto producto = new Producto(idProducto, nombre, vence, precio, medida, disponibles, media, tipo, seccion, marca);
+		//serviceProducto.crear(producto);
 		return "redirect:/";
 	} 
 	

@@ -1,5 +1,6 @@
 package edu.unah.bbddI.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -17,11 +18,11 @@ public class Producto {
 	@Id
 	private int Id_Producto;
 	private String nombre_producto;
-	private Date fecha_caducidad;
+	private LocalDate fecha_caducidad;
 	private float precio_venta;
 	private String medida;
 	private int cantidad_disponible;
-	private int cantidad_media;
+	private String codigo_barra;
 	
 	@ManyToOne
 	@JoinColumn(name="Id_Tipo_Producto")
@@ -40,8 +41,8 @@ public class Producto {
 	
 	public Producto() {}
 
-	public Producto(int id_Producto, String nombre_producto, Date fecha_caducidad, float precio_venta, String medida,
-			int cantidad_disponible, int cantidad_media, Tipo_Producto tipo_producto, Seccion_Producto seccion_producto,
+	public Producto(int id_Producto, String nombre_producto, LocalDate fecha_caducidad, float precio_venta, String medida,
+			int cantidad_disponible, String codigo_barra, Tipo_Producto tipo_producto, Seccion_Producto seccion_producto,
 			Marca marca) {
 		super();
 		Id_Producto = id_Producto;
@@ -50,7 +51,7 @@ public class Producto {
 		this.precio_venta = precio_venta;
 		this.medida = medida;
 		this.cantidad_disponible = cantidad_disponible;
-		this.cantidad_media = cantidad_media;
+		this.codigo_barra = codigo_barra;
 		this.tipo_producto = tipo_producto;
 		this.seccion_producto = seccion_producto;
 		this.marca = marca;
@@ -72,11 +73,11 @@ public class Producto {
 		this.nombre_producto = nombre_producto;
 	}
 
-	public Date getFecha_caducidad() {
+	public LocalDate getFecha_caducidad() {
 		return fecha_caducidad;
 	}
 
-	public void setFecha_caducidad(Date fecha_caducidad) {
+	public void setFecha_caducidad(LocalDate fecha_caducidad) {
 		this.fecha_caducidad = fecha_caducidad;
 	}
 
@@ -103,13 +104,13 @@ public class Producto {
 	public void setCantidad_disponible(int cantidad_disponible) {
 		this.cantidad_disponible = cantidad_disponible;
 	}
-
-	public int getCantidad_media() {
-		return cantidad_media;
+	
+	public String getCodigo_barra() {
+		return codigo_barra;
 	}
 
-	public void setCantidad_media(int cantidad_media) {
-		this.cantidad_media = cantidad_media;
+	public void setCodigo_barra(String codigo_barra) {
+		this.codigo_barra = codigo_barra;
 	}
 
 	public Tipo_Producto getTipo_producto() {

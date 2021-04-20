@@ -1,8 +1,11 @@
 package edu.unah.bbddI.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +16,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.unah.bbddI.model.Cliente;
 import edu.unah.bbddI.model.Marca;
+import edu.unah.bbddI.model.Producto;
 import edu.unah.bbddI.model.Proveedor;
+import edu.unah.bbddI.model.Seccion_Producto;
 import edu.unah.bbddI.model.Telefono;
 import edu.unah.bbddI.model.TelxCliente;
 import edu.unah.bbddI.model.TelxProveedor;
 import edu.unah.bbddI.model.Tipo_Producto;
 import edu.unah.bbddI.service.ServiceCliente;
 import edu.unah.bbddI.service.ServiceMarca;
+import edu.unah.bbddI.service.ServiceProducto;
 import edu.unah.bbddI.service.ServiceProveedor;
+import edu.unah.bbddI.service.ServiceSeccion_Producto;
 import edu.unah.bbddI.service.ServiceTelefono;
 import edu.unah.bbddI.service.ServiceTelxCliente;
 import edu.unah.bbddI.service.ServiceTelxProveedor;
@@ -44,9 +51,19 @@ public class ControllerApp {
 	ServiceTipo_Producto serviceTipo_Producto;
 	@Autowired
 	ServiceMarca serviceMarca;
+	@Autowired
+	ServiceSeccion_Producto serviceSeccion_Producto;
+	@Autowired
+	ServiceProducto serviceProducto;
 	
 	@GetMapping(value = {"/","/admin"})
-	public String paginaPrincipal() {
+	public String paginaPrincipal(Model model) {
+		List<Tipo_Producto> tiposDeProductos = this.serviceTipo_Producto.obtenerTodos();
+		List<Seccion_Producto> seccionesDeProductos = this.serviceSeccion_Producto.obtenerTodos();
+		List<Marca> marcasDeProductos = this.serviceMarca.obtenerTodos();
+		model.addAttribute("tiposDeProductos", tiposDeProductos);
+		model.addAttribute("seccionesDeProductos", seccionesDeProductos);
+		model.addAttribute("marcasDeProductos", marcasDeProductos);
 		return "index";
 	}
 	
@@ -185,14 +202,48 @@ public class ControllerApp {
 	}
 	
 	//====================================================================
-	//	Tipo producto
+	//	Producto
 	//====================================================================
+	@PostMapping(value = "/producto/crearProducto")
+	public String crearProducto(@RequestParam(name = "nombreProducto") String nombreProducto,
+								@RequestParam(name = "fechaCaducidad") @DateTimeFormat(iso = ISO.DATE)  LocalDate fechaCaducidad,
+								@RequestParam(name = "precio") float precio,
+								@RequestParam(name = "unidadMedida") String unidadMedida,
+								@RequestParam(name = "cantidadExistente") int cantidadExistente,
+								@RequestParam(name = "codigoBarra") String codigoBarra,
+								@RequestParam(name = "tipo") int tipo,
+								@RequestParam(name = "seccion") int seccion,
+								@RequestParam(name = "marca") int marca) {
+		Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
+		Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
+		Marca marca_producto = this.serviceMarca.buscar(marca);
+		
+		Producto producto = new Producto();
+		producto.setNombre_producto(nombreProducto);
+		producto.setFecha_caducidad(fechaCaducidad);
+		producto.setPrecio_venta(precio);
+		producto.setMedida(unidadMedida);
+		producto.setCantidad_disponible(cantidadExistente);
+		producto.setCodigo_barra(codigoBarra);
+		producto.setTipo_producto(tipo_producto);
+		producto.setSeccion_producto(seccion_producto);
+		producto.setMarca(marca_producto);
+		serviceProducto.crear(producto);
+		
+		return "redirect:/";
+	}
+	
 	@PostMapping(value = "/tipo/crearTipo")
 	public String crearTipo(@RequestParam(name = "nombre") String nombre) {
 		Tipo_Producto tipoProducto = new Tipo_Producto();
 		tipoProducto.setNombre_tipo_producto(nombre);
 		serviceTipo_Producto.crear(tipoProducto);
 		return "redirect:/";
+	}
+	
+	@GetMapping(value = "/producto/obtenerCombos")
+	public String obtenerCombos() {
+		return "modalCrearProducto";
 	}
 	
 	//====================================================================
