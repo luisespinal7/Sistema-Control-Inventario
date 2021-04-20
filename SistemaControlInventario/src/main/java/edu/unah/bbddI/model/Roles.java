@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="ROLES")
 public class Roles {
 	@Id
-	private int Id_Roles;
+	private int Id_Role;
 	private String role;
 	
 	@OneToMany(mappedBy="roles", fetch=FetchType.LAZY)
@@ -20,19 +20,19 @@ public class Roles {
 	
 	public Roles() {}
 
-	public Roles(int id_Roles, String role, List<Usuario> usuario) {
+	public Roles(int id_Role, String role, List<Usuario> usuario) {
 		super();
-		Id_Roles = id_Roles;
+		Id_Role = id_Role;
 		this.role = role;
 		this.usuario = usuario;
 	}
 
-	public int getId_Roles() {
-		return Id_Roles;
+	public int getId_Role() {
+		return Id_Role;
 	}
 
-	public void setId_Roles(int id_Roles) {
-		Id_Roles = id_Roles;
+	public void setId_Roles(int id_Role) {
+		Id_Role = id_Role;
 	}
 
 	public String getRole() {
