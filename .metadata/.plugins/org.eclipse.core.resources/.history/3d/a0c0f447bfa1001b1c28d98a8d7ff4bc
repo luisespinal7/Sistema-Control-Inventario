@@ -273,7 +273,7 @@ public class ControllerApp {
 		List<Producto> productos= this.serviceProducto.obtenerTodos();
 		model.addAttribute("productos", productos);
 		
-		return "productos";
+		return "proveedores";
 	}
 
 }

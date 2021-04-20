@@ -445,11 +445,11 @@ xmlns:th="http://www.thymeleaf.org">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link"
-								href="index.html">Inicio</a></li>
+								th:href="@{/}">Inicio</a></li>
 							<li class="page-item"><a class="page-link"
 								th:href="@{/proveedores/listaProveedores}">Proveedores</a></li>
 							<li class="page-item"><a class="page-link"
-								href="productos.html">Productos</a></li>
+								th:href="@{/productos/listaProductos}">Productos</a></li>
 							<li class="page-item"><a class="page-link"
 								href="clientes.html">Clientes</a></li>
 							<li class="page-item"><a class="page-link"

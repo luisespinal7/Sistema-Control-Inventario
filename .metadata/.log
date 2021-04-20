@@ -1107,3 +1107,45 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:41:58.877
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.WvAVRyxS => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:12.945
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:12.945
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@4b1e02a[org.springframework.tooling.boot.ls:1.25.0.202103111026(id=555)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:12.946
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.417
+!MESSAGE Boot LS startup time from start to initialized: 1467ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.470
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.StuwMFGuisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.471
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.471
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.472
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.472
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.StuwMFGu => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.472
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.479
+!MESSAGE classpath=107 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.482
+!MESSAGE buffering callback sts4.classpath.StuwMFGu SistemaControlInventario false 107
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.483
+!MESSAGE executing callback sts4.classpath.StuwMFGu 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-04-20 03:59:14.747
+!MESSAGE executing callback sts4.classpath.StuwMFGu SUCCESS [done]

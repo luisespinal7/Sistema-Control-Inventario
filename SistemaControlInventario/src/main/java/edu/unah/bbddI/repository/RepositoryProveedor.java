@@ -13,5 +13,9 @@ public interface RepositoryProveedor extends JpaRepository<Proveedor,Integer>{
 	@Transactional
 	@Query(value="select id_Proveedor from proveedor where nombre = ?1", nativeQuery=true)
 	public int buscarxNombre(String nombre);
+	
+	/*@Transactional
+	@Query(value="select count(id_Proveedor) from proveedor", nativeQuery=true)
+	public int cantidadProveedores();*/
 
 }

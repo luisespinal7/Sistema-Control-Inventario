@@ -271,9 +271,9 @@ public class ControllerApp {
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
 		List<Producto> productos= this.serviceProducto.obtenerTodos();
-		model.addAttribute("productos", productos);
+		model.addAttribute("proveedores", proveedores);
 		
-		return "productos";
+		return "proveedores";
 	}
 
 }

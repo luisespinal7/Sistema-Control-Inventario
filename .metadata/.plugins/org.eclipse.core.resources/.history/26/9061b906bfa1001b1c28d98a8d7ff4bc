@@ -449,7 +449,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<li class="page-item"><a class="page-link"
 								th:href="@{/proveedores/listaProveedores}">Proveedores</a></li>
 							<li class="page-item"><a class="page-link"
-								th:href="@{/productos/listaProductos}">Productos</a></li>
+								th:href="@{/productos/listaProductos}>Productos</a></li>
 							<li class="page-item"><a class="page-link"
 								href="clientes.html">Clientes</a></li>
 							<li class="page-item"><a class="page-link"
