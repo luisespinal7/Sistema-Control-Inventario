@@ -40,12 +40,10 @@ correo VARCHAR(50),
 edad CHAR(3),
 fecha_ingreso DATE,
 salario FLOAT,
-DNI VARCHAR(15) NOT NULL,
+DNI VARCHAR(15) UNIQUE NOT NULL,
 Id_Empresa INT,
 Id_Sexo INT,
 Id_Rol INT,
-usuario VARCHAR(30) NOT NULL,
-contrasenia VARCHAR(30) NOT NULL,
 CONSTRAINT empleadoPK PRIMARY KEY(Id_Empleado),
 CONSTRAINT empresaFK1 FOREIGN KEY(Id_Empresa) REFERENCES EMPRESA(Id_Empresa),
 CONSTRAINT sexoFK FOREIGN KEY(Id_Sexo) REFERENCES SEXO(Id_Sexo),
@@ -64,7 +62,7 @@ s_nombre VARCHAR(25),
 p_apellido VARCHAR(25) NOT NULL,
 s_apellido VARCHAR(25),
 correo VARCHAR(50),
-DNI VARCHAR(15) NOT NULL,
+DNI VARCHAR(15) UNIQUE NOT NULL,
 direccion VARCHAR(70),
 CONSTRAINT clientePK PRIMARY KEY(Id_Cliente));
 
@@ -110,7 +108,7 @@ Id_Proveedor INT AUTO_INCREMENT,
 nombre VARCHAR(50),
 correo VARCHAR(50), 
 direccion VARCHAR(70),
-RTN VARCHAR(15) NOT NULL,
+RTN VARCHAR(15) UNIQUE NOT NULL,
 CONSTRAINT proveedorPK PRIMARY KEY(Id_Proveedor));
 
 CREATE TABLE TELXPROVEEDOR(
@@ -239,38 +237,3 @@ CREATE TABLE PRODUCTOPROVEEDORES(
     CONSTRAINT proveedor_productoFK FOREIGN KEY(Id_Producto) REFERENCES producto(Id_Producto),
     CONSTRAINT producto_proveedorFK FOREIGN KEY(Id_Proveedor) REFERENCES Proveedor(Id_Proveedor)
 );
-	
-CREATE TABLE ROLES(
-Id_Role INT NOT NULL AUTO_INCREMENT,
-role VARCHAR(50),
-CONSTRAINT RolesPK PRIMARY KEY(Id_Role)
-);								    
-								    
-CREATE TABLE USUARIO(
-Id_Usuario INT NOT NULL AUTO_INCREMENT,
-nomUsuario VARCHAR(25) NOT NULL UNIQUE,
-contrasena VARCHAR(25) NOT NULL,
-enabled INT NOT NULL,
-Id_Role INT NOT NULL,
-CONSTRAINT usuarioPK PRIMARY KEY(Id_Usuario),
-CONSTRAINT roleFK FOREIGN KEY(Id_Role) REFERENCES ROLES(Id_Role)
-);
-
-INSERT INTO ROLES(role) VALUES("USER"); /* Permite acceso sin modificar registros. */
-INSERT INTO ROLES(role) VALUES("CREATOR"); /* Permite acceso para crear registros. */
-INSERT INTO ROLES(role) VALUES("EDITOR"); /* Permite acceso para modificar registros. */
-INSERT INTO ROLES(role) VALUES("ADMIN"); /* Permite acceso para todo tipo de acciones. */								    
-
-USE CONTROL_INVENTARIO;
-show tables;
-
-delete from cliente where Id_Cliente = 1;
-select * from cliente;
-select * from telxcliente;
-select * from telefono;
-select * from proveedor;
-
-select * from telxproveedor;
-delete from proveedor where Id_Proveedor = 2;
-delete from telefono where Id_Telefono = 1;
-delete from telxproveedor where Id_Proveedor = 2;
