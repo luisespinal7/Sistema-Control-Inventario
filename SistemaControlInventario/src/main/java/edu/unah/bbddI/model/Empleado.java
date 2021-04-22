@@ -27,8 +27,6 @@ public class Empleado {
 	private Date fecha_ingreso;
 	private float salario;
 	private String DNI;
-	private String usuario;
-	private String contrasenia;
 	
 	@ManyToOne
 	@JoinColumn(name="Id_Empresa")
@@ -51,7 +49,7 @@ public class Empleado {
 	public Empleado() {}
 
 	public Empleado(int id_Empleado, String p_nombre, String s_nombre, String p_apellido, String s_apellido,
-			String correo, int edad, Date fecha_ingreso, float salario, String dNI, String usuario, String contrasenia,
+			String correo, int edad, Date fecha_ingreso, float salario, String dNI,
 			Empresa empresa, Sexo sexo, Rol_Empleado rol_empleado) {
 		super();
 		Id_Empleado = id_Empleado;
@@ -64,8 +62,6 @@ public class Empleado {
 		this.fecha_ingreso = fecha_ingreso;
 		this.salario = salario;
 		DNI = dNI;
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
 		this.empresa = empresa;
 		this.sexo = sexo;
 		this.rol_empleado = rol_empleado;
@@ -150,23 +146,7 @@ public class Empleado {
 	public void setDNI(String dNI) {
 		DNI = dNI;
 	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getContrasenia() {
-		return contrasenia;
-	}
-
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}

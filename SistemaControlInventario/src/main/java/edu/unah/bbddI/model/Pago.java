@@ -33,7 +33,7 @@ public class Pago {
 	private List<Factura_Venta> factura_venta;
 	
 	@ManyToOne
-	@JoinColumn(name="Id_Tipo_Pago")
+	@JoinColumn(name="tipo_pago")
 	@JsonBackReference
 	private Tipo_Pago tipo_pago;
 	
@@ -106,8 +106,5 @@ public class Pago {
 	public void setTipo_pago(Tipo_Pago tipo_pago) {
 		this.tipo_pago = tipo_pago;
 	}
-	
-	
-	
 
 }

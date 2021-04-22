@@ -127,15 +127,13 @@ public class ControllerCreate {
 								@RequestParam(name = "dni") String dni,
 								@RequestParam(name = "edad") int edad,
 								@RequestParam(name = "salario") float salario,
-								@RequestParam(name = "user") String user,
-								@RequestParam(name = "password") String password,
 								@RequestParam(name = "sexo") int sexo,
 								@RequestParam(name = "rol") int rol) {
 		
 		Sexo sex = serviceSexo.buscar(sexo);
 		Rol_Empleado rolE = serviceRol.buscar(rol);
 		Empresa empresa = serviceEmpresa.buscar(2021);
-		Empleado empleado = new Empleado(idEmpleado, pN, sN, pA, sA, correo, edad, fechaIngreso, salario, dni, user, password, empresa, sex, rolE);
+		Empleado empleado = new Empleado(idEmpleado, pN, sN, pA, sA, correo, edad, fechaIngreso, salario, dni, empresa, sex, rolE);
 		serviceEmpleado.crear(empleado);
 		return "redirect:/";
 	} 
