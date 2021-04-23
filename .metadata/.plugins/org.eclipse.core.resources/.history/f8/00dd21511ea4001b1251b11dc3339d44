@@ -368,7 +368,7 @@ public class ControllerApp {
 			serviceTipo_Producto.crear(tipoProducto);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "proveedores";
 		}
 		return "redirect:/";
 	}

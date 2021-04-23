@@ -99,19 +99,19 @@ xmlns:th="http://www.thymeleaf.org">
 				</div>
 				<figure class="full-width navLateral-body-tittle-menu">
 					<div>
-						<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+						<img th:src="@{/assets/img/avatar-male.png}" alt="Avatar" class="img-responsive">
 					</div>
 					<figcaption>
 						<span>
-							Sofia Gineth Videa Valladares<br>
-							<small>Usuario</small>
+							Sofia Gineth Videa<br>
+							<small>Administrador</small>
 						</span>
 					</figcaption>
 				</figure>
 				<nav class="full-width">
 					<ul class="full-width list-unstyle menu-principal">
 						<li class="full-width">
-							<a th:href="@{index.html}" class="full-width">
+							<a th:href="@{/}" class="full-width">
 								<div class="navLateral-body-cl">
 									<i class="zmdi zmdi-view-dashboard"></i>
 								</div>
