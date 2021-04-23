@@ -246,26 +246,22 @@ public class ControllerApp {
 								@RequestParam(name = "tipo") int tipo,
 								@RequestParam(name = "seccion") int seccion,
 								@RequestParam(name = "marca") int marca) {
-		try {	
-			Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
-			Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
-			Marca marca_producto = this.serviceMarca.buscar(marca);
-			
-			Producto producto = new Producto();
-			producto.setNombre_producto(nombreProducto);
-			producto.setFecha_caducidad(fechaCaducidad);
-			producto.setPrecio_venta(precio);
-			producto.setMedida(unidadMedida);
-			producto.setCantidad_disponible(cantidadExistente);
-			producto.setCodigo_barra(codigoBarra);
-			producto.setTipo_producto(tipo_producto);
-			producto.setSeccion_producto(seccion_producto);
-			producto.setMarca(marca_producto);
-			serviceProducto.crear(producto);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
+		Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
+		Marca marca_producto = this.serviceMarca.buscar(marca);
+		
+		Producto producto = new Producto();
+		producto.setNombre_producto(nombreProducto);
+		producto.setFecha_caducidad(fechaCaducidad);
+		producto.setPrecio_venta(precio);
+		producto.setMedida(unidadMedida);
+		producto.setCantidad_disponible(cantidadExistente);
+		producto.setCodigo_barra(codigoBarra);
+		producto.setTipo_producto(tipo_producto);
+		producto.setSeccion_producto(seccion_producto);
+		producto.setMarca(marca_producto);
+		serviceProducto.crear(producto);
+		
 		return "redirect:/";
 	}
 	
@@ -276,20 +272,17 @@ public class ControllerApp {
 	
 	@PostMapping(value = "producto/eliminarProducto")
 	public String eliminarProducto(@RequestParam(name = "id") int id) {
-		try {
-			if(this.serviceProducto.exist(id)) {
-				List<ProductosProveedores> productoProveedores = this.serviceProductosProveedores.obtenerTodosProductosProveedores();
-				for (ProductosProveedores productoProveedor : productoProveedores) {
-					if(productoProveedor.getId_Producto() == id) {
-						this.serviceProductosProveedores.eliminar(productoProveedor);
-					}
+		
+		
+		if(this.serviceProducto.exist(id)) {
+			List<ProductosProveedores> productoProveedores = this.serviceProductosProveedores.obtenerTodosProductosProveedores();
+			for (ProductosProveedores productoProveedor : productoProveedores) {
+				if(productoProveedor.getId_Producto() == id) {
+					this.serviceProductosProveedores.eliminar(productoProveedor);
 				}
-				this.serviceProducto.eliminar(id);
-				return "redirect:/";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+			this.serviceProducto.eliminar(id);
+			return "redirect:/";
 		}
 		return "redirect:/";
 	}
@@ -298,15 +291,10 @@ public class ControllerApp {
 	public String crearProductoxProveedor(@RequestParam(name = "idProducto") int id_Producto,
 									@RequestParam(name = "idProveedor") int Id_proveedor,
 									@RequestParam(name = "precioCompra") int precioCompra) {
-		try {	
-			Producto producto = this.serviceProducto.buscar(id_Producto);
-			Proveedor proveedor = this.serviceProveedor.buscar(Id_proveedor);
-			ProductosProveedores productosProveedores = new ProductosProveedores(id_Producto, Id_proveedor, precioCompra, producto, proveedor);
-			this.serviceProductosProveedores.crearProductosProveedores(productosProveedores);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		Producto producto = this.serviceProducto.buscar(id_Producto);
+		Proveedor proveedor = this.serviceProveedor.buscar(Id_proveedor);
+		ProductosProveedores productosProveedores = new ProductosProveedores(id_Producto, Id_proveedor, precioCompra, producto, proveedor);
+		this.serviceProductosProveedores.crearProductosProveedores(productosProveedores);
 		return "redirect:/";
 	}
 	
@@ -319,39 +307,35 @@ public class ControllerApp {
 									@RequestParam(name = "tipo") int tipo,
 									@RequestParam(name = "seccion") int seccion,
 									@RequestParam(name = "marca") int marca) {
-		try {
-			Producto producto = this.serviceProducto.buscar(id);
-			if(this.serviceProducto.exist(id)) {
-				if(!nombreProducto.equals("")) {
-					producto.setNombre_producto(nombreProducto);
-				}
-				if(precio > 0) {
-					producto.setPrecio_venta(precio);
-				}
-				if(!unidadMedida.equals("")) {
-					producto.setMedida(unidadMedida);
-				}
-				if(cantidadExistente > 0) {
-					producto.setCantidad_disponible(cantidadExistente);
-				}
-				if(tipo > 0) {
-					Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
-					producto.setTipo_producto(tipo_producto);
-				}
-				if(seccion > 0) {
-					Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
-					producto.setSeccion_producto(seccion_producto);
-				}
-				if(marca > 0) {
-					Marca marca_producto = this.serviceMarca.buscar(marca);
-					producto.setMarca(marca_producto);
-				}
-				serviceProducto.crear(producto);
+		Producto producto = this.serviceProducto.buscar(id);
+		if(this.serviceProducto.exist(id)) {
+			if(!nombreProducto.equals("")) {
+				producto.setNombre_producto(nombreProducto);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+			if(precio > 0) {
+				producto.setPrecio_venta(precio);
+			}
+			if(!unidadMedida.equals("")) {
+				producto.setMedida(unidadMedida);
+			}
+			if(cantidadExistente > 0) {
+				producto.setCantidad_disponible(cantidadExistente);
+			}
+			if(tipo > 0) {
+				Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
+				producto.setTipo_producto(tipo_producto);
+			}
+			if(seccion > 0) {
+				Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
+				producto.setSeccion_producto(seccion_producto);
+			}
+			if(marca > 0) {
+				Marca marca_producto = this.serviceMarca.buscar(marca);
+				producto.setMarca(marca_producto);
+			}
+			serviceProducto.crear(producto);
 		}
+		
 		return "redirect:/";
 	}
 	
@@ -374,18 +358,13 @@ public class ControllerApp {
 	@PostMapping(value ="/tipo/actualizarTipo")
 	public String actualizarTipo(@RequestParam(name = "id") int id,
                                 @RequestParam(name = "nombre") String nombre) {
-		try {
-			if(this.serviceTipo_Producto.exist(id)) {
-				Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(id);
-				if(!nombre.equals("")) {
-					tipo_producto.setNombre_tipo_producto(nombre);
-				}
-			
-			serviceTipo_Producto.crear(tipo_producto);
+		if(this.serviceTipo_Producto.exist(id)) {
+			Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(id);
+			if(!nombre.equals("")) {
+				tipo_producto.setNombre_tipo_producto(nombre);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+		
+		serviceTipo_Producto.crear(tipo_producto);
 		}
 		return "redirect:/";
 	}
@@ -395,31 +374,21 @@ public class ControllerApp {
 	//====================================================================
 	@PostMapping(value = "/marca/crearMarca")
 	public String crearMarca(@RequestParam(name = "nombre") String nombre) {
-		try {
-			Marca marca= new Marca();
-			marca.setNombre_marca(nombre);
-			serviceMarca.crear(marca);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		Marca marca= new Marca();
+		marca.setNombre_marca(nombre);
+		serviceMarca.crear(marca);
 		return "redirect:/";
 	}
 	
 	@PostMapping(value ="/marca/actualizarMarca")
 	public String actualizarMarca(@RequestParam(name = "id") int id,
                                 @RequestParam(name = "nombre") String nombre) {
-		try {
-			if(this.serviceMarca.exist(id)) {
-				Marca marca = this.serviceMarca.buscar(id);
-				if(!nombre.equals("")) {
-					marca.setNombre_marca(nombre);
-				}
-			serviceMarca.crear(marca);
+		if(this.serviceMarca.exist(id)) {
+			Marca marca = this.serviceMarca.buscar(id);
+			if(!nombre.equals("")) {
+				marca.setNombre_marca(nombre);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+		serviceMarca.crear(marca);
 		}
 		return "redirect:/";
 	}
@@ -429,35 +398,22 @@ public class ControllerApp {
 	//====================================================================
 	@RequestMapping(value ="proveedores/listaProveedores",method=RequestMethod.GET)
 	public String listadoProveedores(Model model) {
-		try {
-			List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		return "proveedores";
 	}
 	
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
-		try {
-			List<Producto> productos= this.serviceProducto.obtenerTodos();
-			model.addAttribute("productos", productos);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Producto> productos= this.serviceProducto.obtenerTodos();
+		model.addAttribute("productos", productos);
 		return "productos";
 	}
 	
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
-		try {
-			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-			model.addAttribute("clientes", clientes);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 

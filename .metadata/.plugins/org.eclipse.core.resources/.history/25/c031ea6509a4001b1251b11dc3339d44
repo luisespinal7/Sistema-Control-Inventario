@@ -374,18 +374,13 @@ public class ControllerApp {
 	@PostMapping(value ="/tipo/actualizarTipo")
 	public String actualizarTipo(@RequestParam(name = "id") int id,
                                 @RequestParam(name = "nombre") String nombre) {
-		try {
-			if(this.serviceTipo_Producto.exist(id)) {
-				Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(id);
-				if(!nombre.equals("")) {
-					tipo_producto.setNombre_tipo_producto(nombre);
-				}
-			
-			serviceTipo_Producto.crear(tipo_producto);
+		if(this.serviceTipo_Producto.exist(id)) {
+			Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(id);
+			if(!nombre.equals("")) {
+				tipo_producto.setNombre_tipo_producto(nombre);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+		
+		serviceTipo_Producto.crear(tipo_producto);
 		}
 		return "redirect:/";
 	}
@@ -395,31 +390,21 @@ public class ControllerApp {
 	//====================================================================
 	@PostMapping(value = "/marca/crearMarca")
 	public String crearMarca(@RequestParam(name = "nombre") String nombre) {
-		try {
-			Marca marca= new Marca();
-			marca.setNombre_marca(nombre);
-			serviceMarca.crear(marca);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		Marca marca= new Marca();
+		marca.setNombre_marca(nombre);
+		serviceMarca.crear(marca);
 		return "redirect:/";
 	}
 	
 	@PostMapping(value ="/marca/actualizarMarca")
 	public String actualizarMarca(@RequestParam(name = "id") int id,
                                 @RequestParam(name = "nombre") String nombre) {
-		try {
-			if(this.serviceMarca.exist(id)) {
-				Marca marca = this.serviceMarca.buscar(id);
-				if(!nombre.equals("")) {
-					marca.setNombre_marca(nombre);
-				}
-			serviceMarca.crear(marca);
+		if(this.serviceMarca.exist(id)) {
+			Marca marca = this.serviceMarca.buscar(id);
+			if(!nombre.equals("")) {
+				marca.setNombre_marca(nombre);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+		serviceMarca.crear(marca);
 		}
 		return "redirect:/";
 	}
@@ -429,35 +414,22 @@ public class ControllerApp {
 	//====================================================================
 	@RequestMapping(value ="proveedores/listaProveedores",method=RequestMethod.GET)
 	public String listadoProveedores(Model model) {
-		try {
-			List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		return "proveedores";
 	}
 	
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
-		try {
-			List<Producto> productos= this.serviceProducto.obtenerTodos();
-			model.addAttribute("productos", productos);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Producto> productos= this.serviceProducto.obtenerTodos();
+		model.addAttribute("productos", productos);
 		return "productos";
 	}
 	
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
-		try {
-			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-			model.addAttribute("clientes", clientes);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 

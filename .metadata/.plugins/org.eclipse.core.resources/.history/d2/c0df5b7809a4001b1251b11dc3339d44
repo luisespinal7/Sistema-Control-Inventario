@@ -409,17 +409,12 @@ public class ControllerApp {
 	@PostMapping(value ="/marca/actualizarMarca")
 	public String actualizarMarca(@RequestParam(name = "id") int id,
                                 @RequestParam(name = "nombre") String nombre) {
-		try {
-			if(this.serviceMarca.exist(id)) {
-				Marca marca = this.serviceMarca.buscar(id);
-				if(!nombre.equals("")) {
-					marca.setNombre_marca(nombre);
-				}
-			serviceMarca.crear(marca);
+		if(this.serviceMarca.exist(id)) {
+			Marca marca = this.serviceMarca.buscar(id);
+			if(!nombre.equals("")) {
+				marca.setNombre_marca(nombre);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
+		serviceMarca.crear(marca);
 		}
 		return "redirect:/";
 	}
@@ -429,35 +424,22 @@ public class ControllerApp {
 	//====================================================================
 	@RequestMapping(value ="proveedores/listaProveedores",method=RequestMethod.GET)
 	public String listadoProveedores(Model model) {
-		try {
-			List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error";
-		}
+		List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		return "proveedores";
 	}
 	
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
-		try {
-			List<Producto> productos= this.serviceProducto.obtenerTodos();
-			model.addAttribute("productos", productos);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Producto> productos= this.serviceProducto.obtenerTodos();
+		model.addAttribute("productos", productos);
 		return "productos";
 	}
 	
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
-		try {
-			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-			model.addAttribute("clientes", clientes);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 

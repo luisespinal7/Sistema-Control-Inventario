@@ -452,12 +452,8 @@ public class ControllerApp {
 	
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
-		try {
-			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-			model.addAttribute("clientes", clientes);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 

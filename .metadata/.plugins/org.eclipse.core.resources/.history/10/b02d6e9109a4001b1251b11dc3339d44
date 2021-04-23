@@ -434,30 +434,22 @@ public class ControllerApp {
 			model.addAttribute("proveedores", proveedores);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "error;
 		}
 		return "proveedores";
 	}
 	
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
-		try {
-			List<Producto> productos= this.serviceProducto.obtenerTodos();
-			model.addAttribute("productos", productos);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Producto> productos= this.serviceProducto.obtenerTodos();
+		model.addAttribute("productos", productos);
 		return "productos";
 	}
 	
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
-		try {
-			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-			model.addAttribute("clientes", clientes);
-		} catch (Exception e) {
-			return "error";
-		}
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 

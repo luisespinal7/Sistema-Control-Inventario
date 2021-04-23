@@ -456,7 +456,7 @@ public class ControllerApp {
 			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
 			model.addAttribute("clientes", clientes);
 		} catch (Exception e) {
-			return "error";
+			
 		}
 		return "clientes";
 	}
