@@ -141,17 +141,6 @@ xmlns:th="http://www.thymeleaf.org">
 									</div>
 								</a>
 							</li>
-							
-							<li class="full-width">
-								<a class="full-width" data-toggle="modal" data-target="#eliminarCliente">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-accounts"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										Eliminar Cliente
-									</div>
-								</a>
-							</li>
 							<li class="full-width">
 								<a class="full-width" data-toggle="modal" data-target="#actualizarCliente">
 									<div class="navLateral-body-cl">
@@ -249,16 +238,6 @@ xmlns:th="http://www.thymeleaf.org">
 										</a>
 									</li>
 									<li class="full-width">
-										<a class="full-width" data-toggle="modal" data-target="#eliminarTipo">
-											<div class="navLateral-body-cl">
-												<i class="zmdi zmdi-accounts"></i>
-											</div>
-											<div class="navLateral-body-cr">
-												Eliminar Tipo
-											</div>
-										</a>
-									</li>
-									<li class="full-width">
 										<a class="full-width" data-toggle="modal" data-target="#actualizarTipo">
 											<div class="navLateral-body-cl">
 												<i class="zmdi zmdi-accounts"></i>
@@ -334,17 +313,7 @@ xmlns:th="http://www.thymeleaf.org">
 									</div>
 								</a>
 							</li>
-							
-							<li class="full-width">
-								<a class="full-width" data-toggle="modal" data-target="#eliminarMarca">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-accounts"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										Eliminar Marca
-									</div>
-								</a>
-							</li>
+							<li class="full-width divider-menu-h"></li>
 							<li class="full-width">
 								<a class="full-width" data-toggle="modal" data-target="#actualizarMarca">
 									<div class="navLateral-body-cl">
@@ -496,7 +465,7 @@ xmlns:th="http://www.thymeleaf.org">
 						<span class="text-condensedLight"  th:text="${marcasDeProductos.size}">
 						</span>
 						<br>
-						<small>Marcas</small>
+						<small>Marca</small>
 					</span>
 				</div>
 				<a href=""><i class="zmdi zmdi-label tile-icon"></i></a>
@@ -1119,11 +1088,11 @@ xmlns:th="http://www.thymeleaf.org">
 							</button>
 						</div>
 						<div class="modal-body">
-							<form th:action="@{/prducto/actualizarProducto}" method="post">
+							<form th:action="@{/producto/actualizarProducto}" method="post">
 								
 								<div class="form-group">
 									<label for="idProducto">Id:</label> <input type="text"
-										class="form-control" id="idProducto" name="idProducto"
+										class="form-control" id="id" name="id"
 										placeholder="Ingresa el id del producto">
 								</div>
 								<div class="form-group">
@@ -1132,17 +1101,17 @@ xmlns:th="http://www.thymeleaf.org">
 										placeholder="Ingresa el nombre del producto">
 								</div>
 								<div class="form-group">
-									<label for="precio">Precio Venta:</label> <input type="text"
-										class="form-control" name="precio" id="precio">
+									<label for="precio">Precio Venta:</label> <input type="float"
+										class="form-control" name="precio" id="precio" value=0.0f>
 								</div>
 								<div class="form-group">
 									<label for="telefono">Unidad Medida:</label> <input type="text"
-										class="form-control" name="unidadMedida" id="unidadMedida"
+										class="form-control" name="unidadMedida" id="unidadMedida" 
 										placeholder="Ingrese la unidad de Medida">
 								</div>
 								<div class="form-group">
 									<label for="rtn">Cantidad Existente:</label> <input type="text"
-										class="form-control" name="cantidadExistente" id="rtn"
+										class="form-control" name="cantidadExistente" id="rtn" value=0
 										placeholder="Cantidad Existente de Productos">
 								</div>
 								
@@ -1166,12 +1135,6 @@ xmlns:th="http://www.thymeleaf.org">
 										<option th:each="tmpMP:${marcasDeProductos}" th:value="${tmpMP.Id_Marca}" th:text="${tmpMP.nombre_marca}"></option>
 									  </select>
 									</div>
-								<div class="form-group"><label for="proveedor">Proveedor que lo distribuye: </label>
-								<select class="form-select form-select-sm" id="idProveedor" name="idProveedor" aria-label=".form-select-sm example">
-									<option selected value="0">Seleccione una opcion</option>
-									<option th:each="proveedor:${proveedores}" th:value="${proveedor.Id_Proveedor}" th:text="${proveedor.nombre}"></option>
-								  </select>
-								</div>
 									
 								<button type="submit" class="btn btn-primary">Crear</button>
 							</form>

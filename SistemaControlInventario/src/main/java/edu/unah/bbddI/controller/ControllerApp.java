@@ -1,5 +1,6 @@
 package edu.unah.bbddI.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -279,61 +280,44 @@ public class ControllerApp {
 		return "redirect:/";
 	}
 	
-	@PostMapping(value ="/prducto/actualizarProducto")
-	public String actualizarProducto(@RequestParam(name = "idProducto") int idProducto,
+	@PostMapping(value ="/producto/actualizarProducto")
+	public String actualizarProducto(@RequestParam(name = "id") int id,
 									@RequestParam(name = "nombreProducto") String nombreProducto,
-									@RequestParam(name = "precio") String precio,
+									@RequestParam(name = "precio") float precio,
 									@RequestParam(name = "unidadMedida") String unidadMedida,
-									@RequestParam(name = "cantidadExistente") String cantidadExistente,
-									@RequestParam(name = "tipo") String tipo,
-									@RequestParam(name = "seccion") String seccion,
-									@RequestParam(name = "marca") String marca) {
-		if(this.serviceProducto.exist(idProducto)) {
-			/*int ipr = Integer.parseInt(idProveedor); 
-			if(ipr > 0) {
-				List<ProductosProveedores> productoProveedores = this.serviceProductosProveedores.obtenerTodosProductosProveedores();
-				for (ProductosProveedores productoProveedor : productoProveedores) {
-					if(productoProveedor.getId_Producto() == idProducto) {
-						productoProveedor.setId_Proveedor(ipr);
-						productoProveedor.setProveedor4(this.serviceProveedor.buscar(ipr));
-						this.serviceProductosProveedores.crearProductosProveedores(productoProveedor);
-					}
-				}
-	
-			}*/
-			Producto producto= this.serviceProducto.buscar(idProducto);
+									@RequestParam(name = "cantidadExistente") int cantidadExistente,
+									@RequestParam(name = "tipo") int tipo,
+									@RequestParam(name = "seccion") int seccion,
+									@RequestParam(name = "marca") int marca) {
+		Producto producto = this.serviceProducto.buscar(id);
+		if(this.serviceProducto.exist(id)) {
 			if(!nombreProducto.equals("")) {
 				producto.setNombre_producto(nombreProducto);
 			}
-			float precioFloat = Float.parseFloat(precio);
-			if(precioFloat > 0) {
-				producto.setPrecio_venta(precioFloat);
+			if(precio > 0) {
+				producto.setPrecio_venta(precio);
 			}
 			if(!unidadMedida.equals("")) {
 				producto.setMedida(unidadMedida);
 			}
-			int ce = Integer.parseInt(cantidadExistente);
-			if(ce > 0) {
-				producto.setCantidad_disponible(ce);
+			if(cantidadExistente > 0) {
+				producto.setCantidad_disponible(cantidadExistente);
 			}
-			int t = Integer.parseInt(tipo);
-			if(t > 0) {
-				Tipo_Producto tipoProducto = this.serviceTipo_Producto.buscar(t);
-				producto.setTipo_producto(tipoProducto);
+			if(tipo > 0) {
+				Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(tipo);
+				producto.setTipo_producto(tipo_producto);
 			}
-			int s = Integer.parseInt(seccion);
-			if(s > 0) {
-				Seccion_Producto seccionProducto = this.serviceSeccion_Producto.buscar(s);
-				producto.setSeccion_producto(seccionProducto);
+			if(seccion > 0) {
+				Seccion_Producto seccion_producto = this.serviceSeccion_Producto.buscar(seccion);
+				producto.setSeccion_producto(seccion_producto);
 			}
-			int m = Integer.parseInt(marca);
-			if(m > 0) {
-				Marca marcaProducto = this.serviceMarca.buscar(m);
-				producto.setMarca(marcaProducto);
+			if(marca > 0) {
+				Marca marca_producto = this.serviceMarca.buscar(marca);
+				producto.setMarca(marca_producto);
 			}
 			serviceProducto.crear(producto);
 		}
-
+		
 		return "redirect:/";
 	}
 	
@@ -342,9 +326,14 @@ public class ControllerApp {
 	
 	@PostMapping(value = "/tipo/crearTipo")
 	public String crearTipo(@RequestParam(name = "nombre") String nombre) {
-		Tipo_Producto tipoProducto = new Tipo_Producto();
-		tipoProducto.setNombre_tipo_producto(nombre);
-		serviceTipo_Producto.crear(tipoProducto);
+		try {
+			Tipo_Producto tipoProducto = new Tipo_Producto();
+			tipoProducto.setNombre_tipo_producto(nombre);
+			serviceTipo_Producto.crear(tipoProducto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error+";
+		}
 		return "redirect:/";
 	}
 	

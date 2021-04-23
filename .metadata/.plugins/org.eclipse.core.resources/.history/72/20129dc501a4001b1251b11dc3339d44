@@ -1,0 +1,8 @@
+package edu.unah.bbddl.exception;
+
+public class MyDataException extends RuntimeException {
+
+    public MyDataException(String message) {
+        super(message);
+    }
+}

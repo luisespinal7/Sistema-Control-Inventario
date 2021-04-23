@@ -256,9 +256,9 @@ select * from marca
 select * from sexo
 select * from Tipo_producto
 select * from marca
-select * from seccion_producto
-select * from producto
-select * from productoproveedores
+select * from seccion_producto;
+select * from producto;
+select * from productoproveedores;
 
 alter table producto drop column cantidad_Media
 
