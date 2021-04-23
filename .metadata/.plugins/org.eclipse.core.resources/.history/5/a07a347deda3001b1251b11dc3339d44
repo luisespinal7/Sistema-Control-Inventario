@@ -73,10 +73,6 @@ public class ControllerApp {
 		model.addAttribute("marcasDeProductos", marcasDeProductos);
 		model.addAttribute("productos", productos);
 		model.addAttribute("proveedores", proveedores);
-		
-		//modelos especificos para el index
-		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-		model.addAttribute("clientes", clientes);
 		return "index";
 	}
 	

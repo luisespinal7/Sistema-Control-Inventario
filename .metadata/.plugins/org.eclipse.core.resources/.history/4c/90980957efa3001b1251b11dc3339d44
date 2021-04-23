@@ -471,7 +471,7 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<span class="text-condensedLight"  th:text="${clientes.size}">
+						<span class="text-condensedLight"  th:text="${productos.size}">
 						</span>
 						<br>
 						<small>Clientes</small>
@@ -482,9 +482,7 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<span class="text-condensedLight"  th:text="${proveedores.size}">
-						</span>
-						<br>
+						7<br>
 						<small>Proveedores</small>
 					</span>
 				</div>
@@ -493,9 +491,7 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<span class="text-condensedLight"  th:text="${marcasDeProductos.size}">
-						</span>
-						<br>
+						9<br>
 						<small>Marcas</small>
 					</span>
 				</div>

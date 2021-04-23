@@ -76,7 +76,7 @@ public class ControllerApp {
 		
 		//modelos especificos para el index
 		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-		model.addAttribute("clientes", clientes);
+		model.addAttribute("clientes", clientes)
 		return "index";
 	}
 	

@@ -471,7 +471,9 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						71<br>
+						<span class="text-condensedLight"  th:text="${clientes.size}">
+						</span>
+						<br>
 						<small>Clientes</small>
 					</span>
 				</div>
@@ -480,7 +482,9 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						7<br>
+						<span class="text-condensedLight"  th:text="${proveedores.size}">
+						</span>
+						<br>
 						<small>Proveedores</small>
 					</span>
 				</div>
@@ -489,7 +493,9 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						9<br>
+						<span class="text-condensedLight"  th:text="${marcasDeProductos.size}">
+						</span>
+						<br>
 						<small>Marcas</small>
 					</span>
 				</div>
@@ -498,9 +504,12 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						121<br>
+						<span class="text-condensedLight"  th:text="${productos.size}">
+						</span>
+						<br>
 						<small>Productos</small>
 					</span>
+				
 				</div>
 				<a href=""><i class="zmdi zmdi-washing-machine tile-icon"></i></a>
 			</article>

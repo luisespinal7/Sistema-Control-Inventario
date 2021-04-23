@@ -76,7 +76,9 @@ public class ControllerApp {
 		
 		//modelos especificos para el index
 		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
-		model.addAttribute("clientes", clientes);
+		int cantidadMarcas = marcasDeProductos.size();
+		int cantidadProductos = productos.size();
+		int cantidadProveedores = proveedores.size();
 		return "index";
 	}
 	

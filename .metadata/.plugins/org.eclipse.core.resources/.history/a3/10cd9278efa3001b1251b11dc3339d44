@@ -493,7 +493,7 @@ xmlns:th="http://www.thymeleaf.org">
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<span class="text-condensedLight"  th:text="${marcasDeProductos.size}">
+						<span class="text-condensedLight"  th:text="${proveedores.size}">
 						</span>
 						<br>
 						<small>Marcas</small>
