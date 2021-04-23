@@ -137,29 +137,31 @@ public class ControllerApp {
 								@RequestParam(name = "dni") String dni,
 								@RequestParam(name = "direccion") String direccion) {
 		try {
-			Cliente cliente = this.serviceCliente.buscarCliente(id);
-			if(!primerNombre.equals("")) {
-				cliente.setP_nombre(primerNombre);
+			if(this.serviceCliente.exist(id)) {
+				Cliente cliente = this.serviceCliente.buscarCliente(id);
+				if(!primerNombre.equals("")) {
+					cliente.setP_nombre(primerNombre);
+				}
+				if(!segundoNombre.equals("")) {
+					cliente.setS_nombre(segundoNombre);
+				}
+				if(!primerApellido.equals("")) {
+					cliente.setP_apellido(primerApellido);
+				}
+				if(!segundoApellido.equals("")) {
+					cliente.setS_apellido(segundoApellido);
+				}
+				if(!correo.equals("")) {
+					cliente.setCorreo(correo);	
+				}
+				if(!dni.equals("")) {
+					cliente.setDNI(dni);
+				}
+				if(!direccion.equals("")) {
+					cliente.setDireccion(direccion);
+				}
+				serviceCliente.crearCliente(cliente);
 			}
-			if(!segundoNombre.equals("")) {
-				cliente.setS_nombre(segundoNombre);
-			}
-			if(!primerApellido.equals("")) {
-				cliente.setP_apellido(primerApellido);
-			}
-			if(!segundoApellido.equals("")) {
-				cliente.setS_apellido(segundoApellido);
-			}
-			if(!correo.equals("")) {
-				cliente.setCorreo(correo);	
-			}
-			if(!dni.equals("")) {
-				cliente.setDNI(dni);
-			}
-			if(!direccion.equals("")) {
-				cliente.setDireccion(direccion);
-			}
-			serviceCliente.crearCliente(cliente);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -430,7 +432,16 @@ public class ControllerApp {
 	@RequestMapping(value ="proveedores/listaProveedores",method=RequestMethod.GET)
 	public String listadoProveedores(Model model) {
 		try {
-			List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
+			//Todos los modelos que ocuparan las paginas por defecto para popular la información
+			List<Tipo_Producto> tiposDeProductos = this.serviceTipo_Producto.obtenerTodos();
+			List<Seccion_Producto> seccionesDeProductos = this.serviceSeccion_Producto.obtenerTodos();
+			List<Marca> marcasDeProductos = this.serviceMarca.obtenerTodos();
+			List<Producto> productos = this.serviceProducto.obtenerTodos();
+			List<Proveedor> proveedores = this.serviceProveedor.obtenerTodos();
+			model.addAttribute("tiposDeProductos", tiposDeProductos);
+			model.addAttribute("seccionesDeProductos", seccionesDeProductos);
+			model.addAttribute("marcasDeProductos", marcasDeProductos);
+			model.addAttribute("productos", productos);
 			model.addAttribute("proveedores", proveedores);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -442,8 +453,16 @@ public class ControllerApp {
 	@RequestMapping(value ="/productos/listaProductos",method=RequestMethod.GET)
 	public String listadoProductos(Model model) {
 		try {
-			List<Producto> productos= this.serviceProducto.obtenerTodos();
+			List<Tipo_Producto> tiposDeProductos = this.serviceTipo_Producto.obtenerTodos();
+			List<Seccion_Producto> seccionesDeProductos = this.serviceSeccion_Producto.obtenerTodos();
+			List<Marca> marcasDeProductos = this.serviceMarca.obtenerTodos();
+			List<Producto> productos = this.serviceProducto.obtenerTodos();
+			List<Proveedor> proveedores = this.serviceProveedor.obtenerTodos();
+			model.addAttribute("tiposDeProductos", tiposDeProductos);
+			model.addAttribute("seccionesDeProductos", seccionesDeProductos);
+			model.addAttribute("marcasDeProductos", marcasDeProductos);
 			model.addAttribute("productos", productos);
+			model.addAttribute("proveedores", proveedores);
 		} catch (Exception e) {
 			return "error";
 		}
@@ -453,6 +472,16 @@ public class ControllerApp {
 	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
 	public String listarClientes(Model model) {
 		try {
+			List<Tipo_Producto> tiposDeProductos = this.serviceTipo_Producto.obtenerTodos();
+			List<Seccion_Producto> seccionesDeProductos = this.serviceSeccion_Producto.obtenerTodos();
+			List<Marca> marcasDeProductos = this.serviceMarca.obtenerTodos();
+			List<Producto> productos = this.serviceProducto.obtenerTodos();
+			List<Proveedor> proveedores = this.serviceProveedor.obtenerTodos();
+			model.addAttribute("tiposDeProductos", tiposDeProductos);
+			model.addAttribute("seccionesDeProductos", seccionesDeProductos);
+			model.addAttribute("marcasDeProductos", marcasDeProductos);
+			model.addAttribute("productos", productos);
+			model.addAttribute("proveedores", proveedores);
 			List<Cliente> clientes = this.serviceCliente.obtenerTodos();
 			model.addAttribute("clientes", clientes);
 		} catch (Exception e) {

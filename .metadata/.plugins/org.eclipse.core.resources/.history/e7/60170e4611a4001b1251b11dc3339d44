@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin - La Despensa de Sofy</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/sweetalert2.css">
+	<link rel="stylesheet" href="css/material.min.css">
+	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<style>
+        th,td {
+            padding: 0.4rem !important;
+        }
+        body>div {
+            box-shadow: 10px 10px 8px #888888;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="js/material.min.js" ></script>
+	<script src="js/sweetalert2.min.js" ></script>
+	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="js/main.js" ></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<!-- Notifications area -->
+	<section class="full-width container-notifications">
+		<div class="full-width container-notifications-bg btn-Notification"></div>
+	    <section class="NotificationArea">
+	        <div class="full-width text-center NotificationArea-title tittles">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+	        <a href="#" class="Notification" id="notifation-unread-1">
+	            <div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle"></i>
+	                    <strong>Nuevo Usuario</strong> 
+	                    <br>
+	                    <small>Ahora</small>
+	                </p>
+	            </div>
+	        	<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notificaciones no leidas</div> 
+	        </a>
+	        <a href="#" class="Notification" id="notifation-read-1">
+	            <div class="Notification-icon"><i class="zmdi zmdi-cloud-download bg-primary"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle-o"></i>
+	                    <strong>Nueva Actualizacion</strong> 
+	                    <br>
+	                    <small>30 Atrás</small>
+	                </p>
+	            </div>
+	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-1">Notificaciones Leidas</div>
+	        </a>
+	        <a href="#" class="Notification" id="notifation-unread-2">
+	            <div class="Notification-icon"><i class="zmdi zmdi-upload bg-success"></i></div>
+	            <div class="Notification-text">
+	                <p>
+	                    <i class="zmdi zmdi-circle"></i>
+	                    <strong>Archivo Subido</strong> 
+	                    <br>
+	                    <small>31 Atrás</small>
+	                </p>
+	            </div>
+	            </a>   
+	    </section>
+	</section>
+	
+	<div th:insert="BarraLateral::BarraLateral"></div>
+	
+	<!-- pageContent -->
+	<section class="full-width pageContent">
+		<!-- navBar -->
+		<div class="full-width navBar">
+			<div class="full-width navBar-options">
+				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
+				<div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar MENU</div>
+				<nav class="navBar-options-list">
+					<ul class="list-unstyle">
+						<li class="btn-Notification" id="notifications">
+							<i class="zmdi zmdi-notifications"></i>
+							<div class="mdl-tooltip" for="notifications">Notificaciones</div>
+						</li>
+						<li class="btn-exit" id="btn-exit">
+							<i class="zmdi zmdi-power"></i>
+							<div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+						</li>
+						<li class="text-condensedLight noLink" ><small>Sofia Videa</small></li>
+						<li class="noLink">
+							<figure>
+								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+							</figure>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<section class="full-width text-center" style="padding: 40px 0;">
+			<h3 class="text-center tittles">LISTADOS GENERALES</h3>
+			
+			<div th:insert="listado::listado"></div>
+			
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						2<br>
+						<small>Administradores</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-account tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<span class="text-condensedLight"  th:text="${clientes.size}">
+						</span>
+						<br>
+						<small>Clientes</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-accounts tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<span class="text-condensedLight"  th:text="${proveedores.size}">
+						</span>
+						<br>
+						<small>Proveedores</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-truck tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<span class="text-condensedLight"  th:text="${marcasDeProductos.size}">
+						</span>
+						<br>
+						<small>Marca</small>
+					</span>
+				</div>
+				<a href=""><i class="zmdi zmdi-label tile-icon"></i></a>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<span class="text-condensedLight"  th:text="${productos.size}">
+						</span>
+						<br>
+						<small>Productos</small>
+					</span>
+				
+				</div>
+				<a href=""><i class="zmdi zmdi-washing-machine tile-icon"></i></a>
+			</article>
+		</section>
+		
+			<!-- Button trigger modal -->
+
+		</section>
+	</section>
+
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+	</script>
+<!-- DATATABLES -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+</script>
+<!-- BOOTSTRAP -->
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+</script>
+<script>
+	$(document).ready(function () {
+		$('#tablax').DataTable({
+			language: {
+				processing: "En curso...",
+				search: "Buscar&nbsp;:",
+				lengthMenu: "Agrupar de _MENU_ items",
+				info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+				infoEmpty: "No existen datos.",
+				infoFiltered: "(filtrado de _MAX_ elementos en total)",
+				infoPostFix: "",
+				loadingRecords: "Cargando...",
+				zeroRecords: "No se encontraron datos con tu busqueda",
+				emptyTable: "No hay datos disponibles en la tabla.",
+				paginate: {
+					first: "Primero",
+					previous: "Anterior",
+					next: "Siguiente",
+					last: "Ultimo"
+				},
+				aria: {
+					sortAscending: ": active para ordenar la columna en orden ascendente",
+					sortDescending: ": active para ordenar la columna en orden descendente"
+				}
+			},
+			scrollY: 400,
+			lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+		});
+	});
+</script>
+
+</body>
+
+</html>

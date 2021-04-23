@@ -28,6 +28,10 @@ public class ServiceCliente {
 	public int buscarxNombre(String nombre) {
 		return this.repositoryCliente.buscarxNombre(nombre);
 	}
+	
+	public boolean exist(int id) {
+		return this.repositoryCliente.existsById(id);
+	}
 
 
 }
