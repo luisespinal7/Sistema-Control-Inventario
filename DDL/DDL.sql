@@ -135,7 +135,7 @@ importe_total FLOAT,
 importe_x_cuota FLOAT,
 cantidad_cuotas CHAR(5),
 fecha_limite DATE,
-CONSTRAINT pagpPK PRIMARY KEY(Id_Pago),
+CONSTRAINT pagoPK PRIMARY KEY(Id_Pago),
 CONSTRAINT TipoPagoFK FOREIGN KEY(tipo_pago) REFERENCES TIPO_PAGO(Id_Tipo_Pago));
 
 CREATE TABLE CUOTA(
