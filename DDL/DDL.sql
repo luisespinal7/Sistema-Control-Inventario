@@ -89,6 +89,7 @@ CONSTRAINT marcaPK PRIMARY KEY(Id_Marca));
 
 CREATE TABLE PRODUCTO(
 Id_Producto INT AUTO_INCREMENT,
+codigo_barra varchar(30) NOT NULL UNIQUE,
 nombre_producto VARCHAR(50) NOT NULL,
 fecha_caducidad DATE,
 precio_venta FLOAT,
@@ -135,7 +136,7 @@ importe_total FLOAT,
 importe_x_cuota FLOAT,
 cantidad_cuotas CHAR(5),
 fecha_limite DATE,
-CONSTRAINT pagoPK PRIMARY KEY(Id_Pago),
+CONSTRAINT pagpPK PRIMARY KEY(Id_Pago),
 CONSTRAINT TipoPagoFK FOREIGN KEY(tipo_pago) REFERENCES TIPO_PAGO(Id_Tipo_Pago));
 
 CREATE TABLE CUOTA(
