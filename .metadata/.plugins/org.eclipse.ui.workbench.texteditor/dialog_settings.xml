@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="table"/>
+		<item key="selection" value="for "/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="table"/>
-			<item value="tables"/>
-			<item value="table}"/>
-			<item value="&lt;tr"/>
-			<item value="tr"/>
-			<item value="select"/>
-			<item value="inicio"/>
-			<item value="select co"/>
-			<item value="select c"/>
-			<item value="count"/>
-			<item value="img"/>
+			<item value="for "/>
+			<item value="for"/>
+			<item value="marcasDe"/>
 			<item value="tipo"/>
-			<item value="crearClient"/>
-			<item value="crear cliente"/>
-			<item value="Marca"/>
+			<item value="actualizar tipo"/>
+			<item value="clientes"/>
+			<item value="home"/>
+			<item value="eliminar producto"/>
+			<item value="eliminar prod"/>
+			<item value="eliminar pro"/>
+			<item value="each"/>
+			<item value="table"/>
+			<item value="listado"/>
+			<item value="producto"/>
+			<item value="tipo 1"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Id_Marca"/>
@@ -30,8 +30,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="345"/>
-		<item key="DIALOG_Y_ORIGIN" value="283"/>
+		<item key="DIALOG_X_ORIGIN" value="837"/>
+		<item key="DIALOG_Y_ORIGIN" value="263"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

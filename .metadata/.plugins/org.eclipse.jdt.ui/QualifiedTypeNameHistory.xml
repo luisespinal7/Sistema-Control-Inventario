@@ -15,7 +15,6 @@
     <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceTelxProveedor"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.model.Telefono"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.model.Proveedor"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceCliente"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceTelxCliente"/>
@@ -23,11 +22,22 @@
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.model.Cliente"/>
-    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Tipo_Producto"/>
-    <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceTipo_Producto"/>
-    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Marca"/>
     <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceMarca"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceSeccion_Producto"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceTipo_Producto"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Marca"/>
+    <fullyQualifiedTypeName name="org.springframework.format.annotation.DateTimeFormat"/>
+    <fullyQualifiedTypeName name="org.springframework.format.annotation.DateTimeFormat.ISO"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Producto"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceProducto"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.service.ServiceProductosProveedores"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.model.ProductosProveedores"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Tipo_Producto"/>
+    <fullyQualifiedTypeName name="edu.unah.bbddI.model.Seccion_Producto"/>
 </qualifiedTypeNameHistroy>

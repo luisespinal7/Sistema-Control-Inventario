@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.unah.bbddI.model.Cliente;
 import edu.unah.bbddI.model.Marca;
 import edu.unah.bbddI.model.Producto;
+import edu.unah.bbddI.model.ProductosProveedores;
 import edu.unah.bbddI.model.Proveedor;
 import edu.unah.bbddI.model.Seccion_Producto;
 import edu.unah.bbddI.model.Telefono;
@@ -26,6 +27,7 @@ import edu.unah.bbddI.model.Tipo_Producto;
 import edu.unah.bbddI.service.ServiceCliente;
 import edu.unah.bbddI.service.ServiceMarca;
 import edu.unah.bbddI.service.ServiceProducto;
+import edu.unah.bbddI.service.ServiceProductosProveedores;
 import edu.unah.bbddI.service.ServiceProveedor;
 import edu.unah.bbddI.service.ServiceSeccion_Producto;
 import edu.unah.bbddI.service.ServiceTelefono;
@@ -55,15 +57,22 @@ public class ControllerApp {
 	ServiceSeccion_Producto serviceSeccion_Producto;
 	@Autowired
 	ServiceProducto serviceProducto;
+	@Autowired
+	ServiceProductosProveedores serviceProductosProveedores;
 	
 	@GetMapping(value = {"/","/admin"})
 	public String paginaPrincipal(Model model) {
+		//Todos los modelos que ocuparan las paginas por defecto para popular la información
 		List<Tipo_Producto> tiposDeProductos = this.serviceTipo_Producto.obtenerTodos();
 		List<Seccion_Producto> seccionesDeProductos = this.serviceSeccion_Producto.obtenerTodos();
 		List<Marca> marcasDeProductos = this.serviceMarca.obtenerTodos();
+		List<Producto> productos = this.serviceProducto.obtenerTodos();
+		List<Proveedor> proveedores = this.serviceProveedor.obtenerTodos();
 		model.addAttribute("tiposDeProductos", tiposDeProductos);
 		model.addAttribute("seccionesDeProductos", seccionesDeProductos);
 		model.addAttribute("marcasDeProductos", marcasDeProductos);
+		model.addAttribute("productos", productos);
+		model.addAttribute("proveedores", proveedores);
 		return "index";
 	}
 	
@@ -91,13 +100,13 @@ public class ControllerApp {
 		cliente.setDireccion(direccion);
 		serviceCliente.crearCliente(cliente);
 		
-		Telefono telefonoProveedor = new Telefono();
-		telefonoProveedor.setNumero(telefono);
-		serviceTelefono.crear(telefonoProveedor);
+		Telefono telefonoCliente = new Telefono();
+		telefonoCliente.setNumero(telefono);
+		serviceTelefono.crear(telefonoCliente);
 		
 		//agregar telefono al proveedor
 		int tmpClienteId = this.serviceCliente.buscarxNombre(cliente.getP_nombre());
-		int tmpTelefonoId = this.serviceTelefono.buscarxNumero(telefonoProveedor.getNumero());
+		int tmpTelefonoId = this.serviceTelefono.buscarxNumero(telefonoCliente.getNumero());
 		TelxCliente telxCliente = new TelxCliente(tmpTelefonoId, tmpClienteId);
 		this.serviceTelxCliente.crear(telxCliente);
 		
@@ -233,6 +242,100 @@ public class ControllerApp {
 		return "redirect:/";
 	}
 	
+	@GetMapping(value = "/producto/obtenerCombos")
+	public String obtenerCombos() {
+		return "modalCrearProducto";
+	}
+	
+	@PostMapping(value = "producto/eliminarProducto")
+	public String eliminarProducto(@RequestParam(name = "id") int id) {
+		
+		
+		if(this.serviceProducto.exist(id)) {
+			List<ProductosProveedores> productoProveedores = this.serviceProductosProveedores.obtenerTodosProductosProveedores();
+			for (ProductosProveedores productoProveedor : productoProveedores) {
+				if(productoProveedor.getId_Producto() == id) {
+					this.serviceProductosProveedores.eliminar(productoProveedor);
+				}
+			}
+			this.serviceProducto.eliminar(id);
+			return "redirect:/";
+		}
+		return "redirect:/";
+	}
+	
+	@PostMapping(value = "/producto/productoxProveedor")
+	public String crearProductoxProveedor(@RequestParam(name = "idProducto") int id_Producto,
+									@RequestParam(name = "idProveedor") int Id_proveedor,
+									@RequestParam(name = "precioCompra") int precioCompra) {
+		Producto producto = this.serviceProducto.buscar(id_Producto);
+		Proveedor proveedor = this.serviceProveedor.buscar(Id_proveedor);
+		ProductosProveedores productosProveedores = new ProductosProveedores(id_Producto, Id_proveedor, precioCompra, producto, proveedor);
+		this.serviceProductosProveedores.crearProductosProveedores(productosProveedores);
+		return "redirect:/";
+	}
+	
+	@PostMapping(value ="/prducto/actualizarProducto")
+	public String actualizarProducto(@RequestParam(name = "idProducto") int idProducto,
+									@RequestParam(name = "nombreProducto") String nombreProducto,
+									@RequestParam(name = "precio") String precio,
+									@RequestParam(name = "unidadMedida") String unidadMedida,
+									@RequestParam(name = "cantidadExistente") String cantidadExistente,
+									@RequestParam(name = "tipo") String tipo,
+									@RequestParam(name = "seccion") String seccion,
+									@RequestParam(name = "marca") String marca) {
+		if(this.serviceProducto.exist(idProducto)) {
+			/*int ipr = Integer.parseInt(idProveedor); 
+			if(ipr > 0) {
+				List<ProductosProveedores> productoProveedores = this.serviceProductosProveedores.obtenerTodosProductosProveedores();
+				for (ProductosProveedores productoProveedor : productoProveedores) {
+					if(productoProveedor.getId_Producto() == idProducto) {
+						productoProveedor.setId_Proveedor(ipr);
+						productoProveedor.setProveedor4(this.serviceProveedor.buscar(ipr));
+						this.serviceProductosProveedores.crearProductosProveedores(productoProveedor);
+					}
+				}
+	
+			}*/
+			Producto producto= this.serviceProducto.buscar(idProducto);
+			if(!nombreProducto.equals("")) {
+				producto.setNombre_producto(nombreProducto);
+			}
+			float precioFloat = Float.parseFloat(precio);
+			if(precioFloat > 0) {
+				producto.setPrecio_venta(precioFloat);
+			}
+			if(!unidadMedida.equals("")) {
+				producto.setMedida(unidadMedida);
+			}
+			int ce = Integer.parseInt(cantidadExistente);
+			if(ce > 0) {
+				producto.setCantidad_disponible(ce);
+			}
+			int t = Integer.parseInt(tipo);
+			if(t > 0) {
+				Tipo_Producto tipoProducto = this.serviceTipo_Producto.buscar(t);
+				producto.setTipo_producto(tipoProducto);
+			}
+			int s = Integer.parseInt(seccion);
+			if(s > 0) {
+				Seccion_Producto seccionProducto = this.serviceSeccion_Producto.buscar(s);
+				producto.setSeccion_producto(seccionProducto);
+			}
+			int m = Integer.parseInt(marca);
+			if(m > 0) {
+				Marca marcaProducto = this.serviceMarca.buscar(m);
+				producto.setMarca(marcaProducto);
+			}
+			serviceProducto.crear(producto);
+		}
+
+		return "redirect:/";
+	}
+	
+	////////// tipo/ tipos de producto
+	
+	
 	@PostMapping(value = "/tipo/crearTipo")
 	public String crearTipo(@RequestParam(name = "nombre") String nombre) {
 		Tipo_Producto tipoProducto = new Tipo_Producto();
@@ -241,9 +344,18 @@ public class ControllerApp {
 		return "redirect:/";
 	}
 	
-	@GetMapping(value = "/producto/obtenerCombos")
-	public String obtenerCombos() {
-		return "modalCrearProducto";
+	@PostMapping(value ="/tipo/actualizarTipo")
+	public String actualizarTipo(@RequestParam(name = "id") int id,
+                                @RequestParam(name = "nombre") String nombre) {
+		if(this.serviceTipo_Producto.exist(id)) {
+			Tipo_Producto tipo_producto = this.serviceTipo_Producto.buscar(id);
+			if(!nombre.equals("")) {
+				tipo_producto.setNombre_tipo_producto(nombre);
+			}
+		
+		serviceTipo_Producto.crear(tipo_producto);
+		}
+		return "redirect:/";
 	}
 	
 	//====================================================================
@@ -257,6 +369,19 @@ public class ControllerApp {
 		return "redirect:/";
 	}
 	
+	@PostMapping(value ="/marca/actualizarMarca")
+	public String actualizarMarca(@RequestParam(name = "id") int id,
+                                @RequestParam(name = "nombre") String nombre) {
+		if(this.serviceMarca.exist(id)) {
+			Marca marca = this.serviceMarca.buscar(id);
+			if(!nombre.equals("")) {
+				marca.setNombre_marca(nombre);
+			}
+		serviceMarca.crear(marca);
+		}
+		return "redirect:/";
+	}
+	
 	//====================================================================
 	//	Listados
 	//====================================================================
@@ -264,7 +389,6 @@ public class ControllerApp {
 	public String listadoProveedores(Model model) {
 		List<Proveedor> proveedores = this.serviceProveedor.listarProveedores();
 		model.addAttribute("proveedores", proveedores);
-		
 		return "proveedores";
 	}
 	
@@ -272,8 +396,14 @@ public class ControllerApp {
 	public String listadoProductos(Model model) {
 		List<Producto> productos= this.serviceProducto.obtenerTodos();
 		model.addAttribute("productos", productos);
-		
 		return "productos";
+	}
+	
+	@RequestMapping(value = "/clientes/listaClientes", method= RequestMethod.GET)
+	public String listarClientes(Model model) {
+		List<Cliente> clientes = this.serviceCliente.obtenerTodos();
+		model.addAttribute("clientes", clientes);
+		return "clientes";
 	}
 
 }

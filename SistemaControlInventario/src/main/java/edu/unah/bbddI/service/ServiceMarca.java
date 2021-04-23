@@ -24,4 +24,8 @@ public class ServiceMarca {
 	public List<Marca> obtenerTodos(){
 		return this.repositoryMarca.findAll();
 	}
+	
+	public boolean exist(int id) {
+		return this.repositoryMarca.existsById(id);
+	}
 }

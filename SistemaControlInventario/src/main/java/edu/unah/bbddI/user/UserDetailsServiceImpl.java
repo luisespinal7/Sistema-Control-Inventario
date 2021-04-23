@@ -1,3 +1,4 @@
+/*
 //Se necesita implementar la interfaz UserDetailsService definido por el Spring security como parte del proceso de autenticación
 package edu.unah.bbddI.user;
 
@@ -26,3 +27,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
  
 }
+*/

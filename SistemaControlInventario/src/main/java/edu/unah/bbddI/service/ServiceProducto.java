@@ -24,4 +24,15 @@ public class ServiceProducto {
 	public List<Producto> obtenerTodos(){
 		return this.repositoryProducto.findAll();
 	}
+	
+	public Producto eliminar(int id) {
+		Producto producto = this.buscar(id);
+		this.repositoryProducto.deleteById(id);
+		return producto;
+	}
+	
+	public boolean exist(int id) {
+		return this.repositoryProducto.existsById(id);
+	}
+	
 }

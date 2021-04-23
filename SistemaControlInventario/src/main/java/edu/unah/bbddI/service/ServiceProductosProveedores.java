@@ -25,4 +25,8 @@ public class ServiceProductosProveedores {
 	public List<ProductosProveedores> obtenerTodosProductosProveedores(){
 		return this.repositoryProductosProveedores.findAll();
 	}
+	
+	public void eliminar(ProductosProveedores productosProveedores) {
+		this.repositoryProductosProveedores.delete(productosProveedores);;
+	}
 }

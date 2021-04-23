@@ -1,3 +1,4 @@
+/*
 //Esta es una clase para conectar todas las partes del proceso de autenticación
 package edu.unah.bbddI.user;
 
@@ -13,8 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
-	/*Los siguientes cuatro métodos son necesarios para configurar un proveedor de autenticación que utilice
-	 * Spring Data JPA e Hibernate*/
+	//Los siguientes cuatro métodos son necesarios para configurar un proveedor de autenticación que utilice
+	//Spring Data JPA e Hibernate
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
@@ -40,8 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
  
     //En el siguiente método se configura HTTP Security para autenticación y autorización
-    /*También se configura una URL personalizada para mostrar el error de acceso denegado 
-    en caso de que un usuario no tenga permisos para realizar una acción*/
+    //También se configura una URL personalizada para mostrar el error de acceso denegado 
+    //en caso de que un usuario no tenga permisos para realizar una acción
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -59,3 +60,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             ;
     }
 }
+*/

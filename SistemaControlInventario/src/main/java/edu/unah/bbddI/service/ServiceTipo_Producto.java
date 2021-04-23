@@ -24,4 +24,8 @@ public class ServiceTipo_Producto {
 	public List<Tipo_Producto> obtenerTodos(){
 		return this.repositoryTipo_Producto.findAll();
 	}
+	
+	public boolean exist(int id) {
+		return this.repositoryTipo_Producto.existsById(id);
+	}
 }

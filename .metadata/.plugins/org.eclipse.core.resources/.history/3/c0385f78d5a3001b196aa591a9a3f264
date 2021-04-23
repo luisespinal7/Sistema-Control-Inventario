@@ -1,0 +1,15 @@
+package edu.unah.bbddI.repository;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import edu.unah.bbddI.model.IdProductosProveedores;
+import edu.unah.bbddI.model.ProductosProveedores;
+
+public interface RepositoryProductosProveedores extends JpaRepository<ProductosProveedores,IdProductosProveedores>{
+
+
+	
+}

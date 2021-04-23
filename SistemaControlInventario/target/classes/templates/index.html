@@ -451,7 +451,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<li class="page-item"><a class="page-link"
 								th:href="@{/productos/listaProductos}">Productos</a></li>
 							<li class="page-item"><a class="page-link"
-								href="clientes.html">Clientes</a></li>
+								th:href="@{/clientes/listaClientes}">Clientes</a></li>
 							<li class="page-item"><a class="page-link"
 								href="empleados.html">Empleados</a></li>
 						</ul>
@@ -1038,30 +1038,26 @@ xmlns:th="http://www.thymeleaf.org">
 						</button>
 					</div>
 					<div class="modal-body">
-						<form th:action="@{/producto/Producto/proveedor}" method="post">
-							<div class="form-group"><label for="producto">Producto: </label>
-								<select class="form-select form-select-sm" id="producto" aria-label=".form-select-sm example">
+						<form th:action="@{producto/productoxProveedor}" method="post">
+								<div class="form-group"><label for="producto">Producto: </label>
+								<select class="form-select form-select-sm" id="idProducto" name="idProducto" aria-label=".form-select-sm example">
 									<option selected>Seleccione una opcion</option>
-									<option value="1">Producto 1</option>
-									<option value="2">Producto 2</option>
-									<option value="3">Producto 3</option>
+									<option th:each="producto:${productos}" th:value="${producto.Id_Producto}" th:text="${producto.nombre_producto}"></option>
 								  </select>
 								</div>
 
-								<div class="form-group"><label for="marca">Proveedor que lo distribuye: </label>
-									<select class="form-select form-select-sm" id="marca" aria-label=".form-select-sm example">
-										<option selected>Seleccione una opcion</option>
-										<option value="1">Proveedor 1</option>
-										<option value="2">Proveedor 2</option>
-										<option value="3">Proveedor 3</option>
-									  </select>
-									</div>
+								<div class="form-group"><label for="proveedor">Proveedor que lo distribuye: </label>
+								<select class="form-select form-select-sm" id="idProveedor" name="idProveedor" aria-label=".form-select-sm example">
+									<option selected>Seleccione una opcion</option>
+									<option th:each="proveedor:${proveedores}" th:value="${proveedor.Id_Proveedor}" th:text="${proveedor.nombre}"></option>
+								  </select>
+								</div>
 
-									<div class="form-group">
-										<label for="precioCompra">Precio Compra:</label> <input type="text"
-											class="form-control" name="precioCompra" id="precioCompra"
-											placeholder="Ingresa el precio del producto">
-									</div>
+								<div class="form-group">
+									<label for="precio">Precio de compra:</label> <input type="text"
+										class="form-control" name="precioCompra" id="precioCompra"
+										placeholder="Ingresa el precio del producto">
+								</div>
 
 							<button type="submit" class="btn btn-primary">Crear</button>
 						</form>
@@ -1084,7 +1080,7 @@ xmlns:th="http://www.thymeleaf.org">
 							</button>
 						</div>
 						<div class="modal-body">
-							<form th:action="@{/eliminarProducto}" method="post">
+							<form th:action="@{/producto/eliminarProducto}" method="post">
 								<div class="form-group">
 									<label for="id">Id Producto:</label> <input type="text"
 										class="form-control" name="id" id="idCliente"
@@ -1114,11 +1110,12 @@ xmlns:th="http://www.thymeleaf.org">
 							</button>
 						</div>
 						<div class="modal-body">
-							<form th:action="@{/producto/actualizarProducto}" method="post">
+							<form th:action="@{/prducto/actualizarProducto}" method="post">
 								
 								<div class="form-group">
-									<label for="id">Id:</label> <input type="text"
-										class="form-control" name="id" id="id">
+									<label for="idProducto">Id:</label> <input type="text"
+										class="form-control" id="idProducto" name="idProducto"
+										placeholder="Ingresa el id del producto">
 								</div>
 								<div class="form-group">
 									<label for="nombre">Nombre:</label> <input type="text"
@@ -1126,14 +1123,8 @@ xmlns:th="http://www.thymeleaf.org">
 										placeholder="Ingresa el nombre del producto">
 								</div>
 								<div class="form-group">
-									<label for="nombre">Fecha Caducidad:</label> <input type="date"
-										class="form-control" name="fechaCaducidad" id="fechaCaducidad"
-										placeholder="Ingresa la fecha de Caducidad del producto">
-								</div>
-								<div class="form-group">
-									<label for="direccion">Precio Venta:</label> <input type="text"
-										class="form-control" name="precio" id="precio"
-										placeholder="Precio del Producto">
+									<label for="precio">Precio Venta:</label> <input type="text"
+										class="form-control" name="precio" id="precio">
 								</div>
 								<div class="form-group">
 									<label for="telefono">Unidad Medida:</label> <input type="text"
@@ -1145,46 +1136,34 @@ xmlns:th="http://www.thymeleaf.org">
 										class="form-control" name="cantidadExistente" id="rtn"
 										placeholder="Cantidad Existente de Productos">
 								</div>
-								<div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									  Tipo Producto
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									  <li><a class="dropdown-item" href="#">Tipo 1</a></li>
-									  <li><a class="dropdown-item" href="#">Tipo 2</a></li>
-									  <li><a class="dropdown-item" href="#">Tipo 3</a></li>
-									</ul>
-								  </div>
-								  <div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									  Sección Producto
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									  <li><a class="dropdown-item" href="#">Seccion 1</a></li>
-									  <li><a class="dropdown-item" href="#">Seccion 2</a></li>
-									  <li><a class="dropdown-item" href="#">Seccion 3</a></li>
-									</ul>
-								  </div>
-								  <div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									  Marca
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									  <li><a class="dropdown-item" href="#">Marca 1</a></li>
-									  <li><a class="dropdown-item" href="#">Marca 2</a></li>
-									  <li><a class="dropdown-item" href="#">Marca 3</a></li>
-									</ul>
-								  </div>
-								  <div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									  Proveedor
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									  <li><a class="dropdown-item" href="#">Proveedor 1</a></li>
-									  <li><a class="dropdown-item" href="#">Proveedor 2</a></li>
-									  <li><a class="dropdown-item" href="#">Proveedor 3</a></li>
-									</ul>
-								  </div>
+								
+								<div class="form-group"><label for="tipo">Tipo Producto: </label>
+								<select class="form-select form-select-sm" id="tipo" name="tipo" aria-label=".form-select-sm example">
+									<option selected value="0" >Seleccione una opcion</option>
+									<option th:each="tmpTP:${tiposDeProductos}" th:value="${tmpTP.Id_Tipo_Producto}" th:text="${tmpTP.nombre_tipo_producto}"></option>
+								  </select>
+								</div>
+
+								  <div class="form-group"><label for="seccion">Seccion Producto: </label>
+								<select class="form-select form-select-sm" id="seccion" name="seccion" aria-label=".form-select-sm example">
+									<option selected value="0">Seleccione una opcion</option>
+									<option th:each="tmpSP:${seccionesDeProductos}" th:value="${tmpSP.Id_Seccion_Producto}" th:text="${tmpSP.nombre_seccion_producto}"></option>
+								  </select>
+								</div>
+
+								<div class="form-group"><label for="marca">Marca Producto: </label>
+									<select class="form-select form-select-sm" id="marca" name="marca" aria-label=".form-select-sm example">
+										<option selected value="0">Seleccione una opcion</option>
+										<option th:each="tmpMP:${marcasDeProductos}" th:value="${tmpMP.Id_Marca}" th:text="${tmpMP.nombre_marca}"></option>
+									  </select>
+									</div>
+								<div class="form-group"><label for="proveedor">Proveedor que lo distribuye: </label>
+								<select class="form-select form-select-sm" id="idProveedor" name="idProveedor" aria-label=".form-select-sm example">
+									<option selected value="0">Seleccione una opcion</option>
+									<option th:each="proveedor:${proveedores}" th:value="${proveedor.Id_Proveedor}" th:text="${proveedor.nombre}"></option>
+								  </select>
+								</div>
+									
 								<button type="submit" class="btn btn-primary">Crear</button>
 							</form>
 						</div>
@@ -1263,7 +1242,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 						</button>
 					</div>
 					<div class="modal-body">
-						<form th:action="@{/marca/crearMarca}" method="post">
+						<form th:action="@{/marca/actualizarMarca}" method="post">
 							<div class="form-group">
 								<label for="id">Id:</label> <input type="text"
 									class="form-control" name="id" id="id"

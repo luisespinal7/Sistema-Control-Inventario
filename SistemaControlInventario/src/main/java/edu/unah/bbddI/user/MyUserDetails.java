@@ -1,5 +1,6 @@
-/* Spring security requiere una implemetación de la interfaz UserDetails para saber acerca 
-de la autenticación de la información del usuario*/
+/*
+//Spring security requiere una implemetación de la interfaz UserDetails para saber acerca 
+//de la autenticación de la información del usuario
 package edu.unah.bbddI.user;
 
 import java.util.*;
@@ -61,3 +62,4 @@ public class MyUserDetails implements UserDetails {
     }
  
 }
+*/

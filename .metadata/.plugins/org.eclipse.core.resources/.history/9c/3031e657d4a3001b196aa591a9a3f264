@@ -1,0 +1,14 @@
+package edu.unah.bbddI.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import edu.unah.bbddI.model.IdProductosProveedores;
+import edu.unah.bbddI.model.ProductosProveedores;
+
+public interface RepositoryProductosProveedores extends JpaRepository<ProductosProveedores,IdProductosProveedores>{
+
+	@Transactional
+	@Query(value="delete from productoproveedores where Id_Producto = 3", nativeQuery=true)
+	public int cantidadProveedores();
+	
+}
